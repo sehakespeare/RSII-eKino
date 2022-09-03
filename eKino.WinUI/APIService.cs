@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using eKino.Model;
 using eKino.WinUI.Properties;
+using eKino.WinUI.Helper;
+using System.Net;
 
 namespace eKino.WinUI
 {
@@ -16,6 +18,8 @@ namespace eKino.WinUI
 
         public static string Username = null;
         public static string Password = null;
+
+        public static User CurrentUser { get; set; }
 
         public APIService(string resource)
         {
@@ -31,14 +35,14 @@ namespace eKino.WinUI
             }
 
             var list = await $"{_endpoint}{_resource}?{query}".WithBasicAuth(Username, Password).GetJsonAsync<T>();
-            
+
             return list;
+
         }
 
         public async Task<T> GetById<T>(object id)
         {
             var result = await $"{_endpoint}{_resource}/{id}".WithBasicAuth(Username, Password).GetJsonAsync<T>();
-
             return result;
         }
 
@@ -51,25 +55,52 @@ namespace eKino.WinUI
             }
             catch (FlurlHttpException ex)
             {
-                var errors = await ex.GetResponseJsonAsync<Dictionary<string, string[]>>();
-
-                var stringBuilder = new StringBuilder();
-                foreach (var error in errors)
-                {
-                    stringBuilder.AppendLine($"{error.Key}, ${string.Join(",", error.Value)}");
-                }
-
-                MessageBox.Show(stringBuilder.ToString(), "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return default(T);
+                return await HandleFlurlException<T>(ex);
             }
 
         }
 
         public async Task<T> Put<T>(object id, object request)
         {
-            var result = await $"{_endpoint}{_resource}/{id}".WithBasicAuth(Username, Password).PutJsonAsync(request).ReceiveJson<T>();
 
-            return result;
+            try
+            {
+                var result = await $"{_endpoint}{_resource}/{id}".WithBasicAuth(Username, Password).PutJsonAsync(request).ReceiveJson<T>();
+                return result;
+            }
+            catch (FlurlHttpException ex)
+            {
+                return await HandleFlurlException<T>(ex);
+            }
         }
+        private static async Task<T> HandleFlurlException<T>(FlurlHttpException ex)
+        {
+            if (ex.StatusCode == (int)HttpStatusCode.Unauthorized)
+            {
+                MessageBox.Show("Access Unauthorized", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (ex.StatusCode == (int)HttpStatusCode.Forbidden)
+            {
+                MessageBox.Show("Access Forbidden", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                var errors = await ex.GetResponseJsonAsync<ProblemDetailsWithErrors>();
+
+                if (errors != null)
+                {
+
+                    var stringBuilder = new StringBuilder();
+                    foreach (var error in errors.Errors)
+                    {
+                        stringBuilder.AppendLine(string.Join(", ", error.Value));
+                    }
+
+                    MessageBox.Show(stringBuilder.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            return default;
+        }
+
     }
 }

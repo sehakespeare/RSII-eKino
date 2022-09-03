@@ -258,19 +258,19 @@ namespace eKino.Services.Migrations
                 columns: new[] { "UserId", "Email", "FirstName", "LastName", "PasswordHash", "PasswordSalt", "Phone", "Status", "Username" },
                 values: new object[,]
                 {
-                    { 1, "client@fit.ba", "Client", "Client", "7p3l25Cnbg+2QxoQRElFJjIqHgA=", "H4pOSYtdeJgGsU/6HRTxqw==", null, null, "client" },
-                    { 2, "admin@fit.ba", "Administrator", "Administrator", "JfJzsL3ngGWki+Dn67C+8WLy73I=", "7TUJfmgkkDvcY3PB/M4fhg==", null, null, "admin" }
+                    { 1, "admin@fit.ba", "Administrator", "Administrator", "JfJzsL3ngGWki+Dn67C+8WLy73I=", "7TUJfmgkkDvcY3PB/M4fhg==", "061456789", true, "admin" },
+                    { 2, "client@fit.ba", "Client", "Client", "Qt4/SE4hNB9rKyspn+e8q4C79Sw=", "l6n9Ck0LvsyNX1/V47AePQ==", "061123123", true, "client" }
                 });
 
             migrationBuilder.InsertData(
                 table: "UserRoles",
                 columns: new[] { "UserRoleId", "DateModified", "RoleId", "UserId" },
-                values: new object[] { 1, new DateTime(2022, 9, 3, 0, 0, 0, 0, DateTimeKind.Local), 1, 1 });
+                values: new object[] { 1, new DateTime(2022, 9, 12, 0, 0, 0, 0, DateTimeKind.Local), 1, 1 });
 
             migrationBuilder.InsertData(
                 table: "UserRoles",
                 columns: new[] { "UserRoleId", "DateModified", "RoleId", "UserId" },
-                values: new object[] { 2, new DateTime(2022, 9, 3, 0, 0, 0, 0, DateTimeKind.Local), 1, 2 });
+                values: new object[] { 2, new DateTime(2022, 9, 12, 0, 0, 0, 0, DateTimeKind.Local), 2, 2 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_MovieGenres_GenreId",

@@ -18,11 +18,14 @@ namespace eKino.Model.Requests
         [Required(AllowEmptyStrings = false)]
         public string Phone { get; set; }
 
-        [MinLength(4)]
+        [StringLength(50, MinimumLength = 4)]
         [Required(AllowEmptyStrings = false)]
         public string Username { get; set; }
+
+        [Required(AllowEmptyStrings = false)]
         public string Password { get; set; }
 
+        [Required(AllowEmptyStrings = false)]
         public string PasswordConfirm { get; set; }
 
         public bool? Status { get; set; }

@@ -12,19 +12,19 @@ using System.Windows.Forms;
 
 namespace eKino.WinUI
 {
-    public partial class frmUserList : Form
+    public partial class frmGenreList : Form
     {
-        private readonly APIService UsersService = new("User");
+        private readonly APIService GenresService = new("Genre");
         private int Page = 0;
         private readonly int PerPage = 5;
 
-        public frmUserList()
+        public frmGenreList()
         {
             InitializeComponent();
-            dgvUsers.AutoGenerateColumns = false;
+            dgvGenres.AutoGenerateColumns = false;
         }
 
-        private async void frmUser_Load(object sender, EventArgs e)
+        private async void frmGenre_Load(object sender, EventArgs e)
         {
             await LoadDataGrid();
         }
@@ -36,41 +36,39 @@ namespace eKino.WinUI
 
         private async Task LoadDataGrid()
         {
-            var searchObject = new UserSearchObject
+            var searchObject = new GenreSearchObject
             {
-                Username = txtUsername.Text,
                 Name = txtName.Text,
-                IncludeRoles = true,
                 PageSize = PerPage,
                 Page = Page
             };
 
-            var list = await UsersService.Get<List<User>>(searchObject);
+            var list = await GenresService.Get<List<Genre>>(searchObject);
 
-            dgvUsers.DataSource = list;
+            dgvGenres.DataSource = list;
             UpdatePagination();
         }
 
-        private async void dgvUsers_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private async void dgvGenres_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvUsers.SelectedRows.Count > 0 && dgvUsers.SelectedRows[0].DataBoundItem is User item)
-            {
-                if (new frmUserDetails(item).ShowDialog() == DialogResult.OK)
-                {
-                    await LoadDataGrid();
-                }
-            }
+            //if (dgvGenres.SelectedRows.Count > 0 && dgvGenres.SelectedRows[0].DataBoundItem is Genre item)
+            //{
+            //    if (new frmGenreDetails(item).ShowDialog() == DialogResult.OK)
+            //    {
+            //        await LoadDataGrid();
+            //    }
+            //}
         }
 
         private async void btnCreateNew_Click(object sender, EventArgs e)
         {
-            if (new frmUserDetails().ShowDialog() == DialogResult.OK)
-            {
-                await LoadDataGrid();
-            }
+            //if (new frmGenreDetails().ShowDialog() == DialogResult.OK)
+            //{
+            //    await LoadDataGrid();
+            //}
         }
 
-        private void txtUsername_Enter(object sender, EventArgs e)
+        private void txtName_Enter(object sender, EventArgs e)
         {
             lblHint.Visible = true;
         }
@@ -80,22 +78,12 @@ namespace eKino.WinUI
             lblHint.Visible = false;
         }
 
-        private void txtName_Enter(object sender, EventArgs e)
-        {
-            lblHint.Visible = true;
-        }
-
-        private void txtUsername_Leave(object sender, EventArgs e)
-        {
-            lblHint.Visible = false;
-        }
-
-        private void dgvUsers_Enter(object sender, EventArgs e)
+        private void dgvGenres_Enter(object sender, EventArgs e)
         {
             labelHint2.Visible = true;
         }
 
-        private void dgvUsers_Leave(object sender, EventArgs e)
+        private void dgvGenres_Leave(object sender, EventArgs e)
         {
             labelHint2.Visible = false;
         }
@@ -116,7 +104,7 @@ namespace eKino.WinUI
         private void UpdatePagination()
         {
             btnPrev.Enabled = Page > 0;
-            btnNext.Enabled = dgvUsers.RowCount >= PerPage;
+            btnNext.Enabled = dgvGenres.RowCount >= PerPage;
             btnPage.Text = $"Page {Page + 1}";
         }
 

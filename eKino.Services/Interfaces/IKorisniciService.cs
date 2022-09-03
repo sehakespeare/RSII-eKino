@@ -7,10 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace eKino.Services
+namespace eKino.Services.Interfaces
 {
     public interface IUsersService : ICRUDService<User, UserSearchObject, UserInsertRequest, UserUpdateRequest>
     {
-        Model.User? Login(string username, string password);
+        User? Login(string username, string password);
     }
 }

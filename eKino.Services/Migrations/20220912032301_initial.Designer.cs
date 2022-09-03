@@ -12,7 +12,7 @@ using eKino.Services.Database;
 namespace eKino.Services.Migrations
 {
     [DbContext(typeof(eKinoContext))]
-    [Migration("20220903162054_initial")]
+    [Migration("20220912032301_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -303,22 +303,26 @@ namespace eKino.Services.Migrations
                         new
                         {
                             UserId = 1,
-                            Email = "client@fit.ba",
-                            FirstName = "Client",
-                            LastName = "Client",
-                            PasswordHash = "7p3l25Cnbg+2QxoQRElFJjIqHgA=",
-                            PasswordSalt = "H4pOSYtdeJgGsU/6HRTxqw==",
-                            Username = "client"
-                        },
-                        new
-                        {
-                            UserId = 2,
                             Email = "admin@fit.ba",
                             FirstName = "Administrator",
                             LastName = "Administrator",
                             PasswordHash = "JfJzsL3ngGWki+Dn67C+8WLy73I=",
                             PasswordSalt = "7TUJfmgkkDvcY3PB/M4fhg==",
+                            Phone = "061456789",
+                            Status = true,
                             Username = "admin"
+                        },
+                        new
+                        {
+                            UserId = 2,
+                            Email = "client@fit.ba",
+                            FirstName = "Client",
+                            LastName = "Client",
+                            PasswordHash = "Qt4/SE4hNB9rKyspn+e8q4C79Sw=",
+                            PasswordSalt = "l6n9Ck0LvsyNX1/V47AePQ==",
+                            Phone = "061123123",
+                            Status = true,
+                            Username = "client"
                         });
                 });
 
@@ -351,15 +355,15 @@ namespace eKino.Services.Migrations
                         new
                         {
                             UserRoleId = 1,
-                            DateModified = new DateTime(2022, 9, 3, 0, 0, 0, 0, DateTimeKind.Local),
+                            DateModified = new DateTime(2022, 9, 12, 0, 0, 0, 0, DateTimeKind.Local),
                             RoleId = 1,
                             UserId = 1
                         },
                         new
                         {
                             UserRoleId = 2,
-                            DateModified = new DateTime(2022, 9, 3, 0, 0, 0, 0, DateTimeKind.Local),
-                            RoleId = 1,
+                            DateModified = new DateTime(2022, 9, 12, 0, 0, 0, 0, DateTimeKind.Local),
+                            RoleId = 2,
                             UserId = 2
                         });
                 });

@@ -9,8 +9,9 @@ using System.Text;
 using Microsoft.EntityFrameworkCore;
 using eKino.Model;
 using eKino.Services.Helpers;
+using eKino.Services.Interfaces;
 
-namespace eKino.Services
+namespace eKino.Services.Implementations
 {
     public class UsersService : BaseCRUDService<Model.User, Database.User, UserSearchObject, UserInsertRequest, UserUpdateRequest>, IUsersService
     {
@@ -28,8 +29,8 @@ namespace eKino.Services
 
             var entity = base.Insert(insert);
 
-            
-            foreach(var roleId in insert.RoleIdList)
+
+            foreach (var roleId in insert.RoleIdList)
             {
                 Database.UserRole userRole = new Database.UserRole
                 {
@@ -61,17 +62,22 @@ namespace eKino.Services
 
             if (!string.IsNullOrWhiteSpace(search?.Username))
             {
-                filteredQuery = filteredQuery.Where(x => x.Username == search.Username);
+                filteredQuery = filteredQuery.Where(x => x.Username.Contains(search.Username));
+            }
+            
+            if (!string.IsNullOrWhiteSpace(search?.Name))
+            {
+                filteredQuery = filteredQuery.Where(x => (x.FirstName + " " + x.LastName).Contains(search.Name));
             }
 
             return filteredQuery;
         }
-        
+
         public override IQueryable<Database.User> AddInclude(IQueryable<Database.User> query, UserSearchObject search = null)
         {
             if (search?.IncludeRoles == true)
             {
-                 query = query.Include("UserRoles.Role");
+                query = query.Include("UserRoles.Role");
             }
             return query;
         }

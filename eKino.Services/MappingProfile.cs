@@ -12,11 +12,25 @@ namespace eKino.Services
     {
         public MappingProfile()
         {
+            CreateMap<Database.Auditorium, Model.Auditorium>();
+            CreateMap<Database.Director, Model.Director>();
+            CreateMap<Database.Genre, Model.Genre>();
+            CreateMap<Database.Movie, Model.Movie>();
+            CreateMap<Database.MovieGenre, Model.MovieGenre>();
+            CreateMap<Database.Projection, Model.Projection>();
+            CreateMap<Database.Reservation, Model.Reservation>();
+            CreateMap<Database.Rating, Model.Rating>();
             CreateMap<Database.User, Model.User>();
-
             CreateMap<Database.UserRole, Model.UserRole>();
             CreateMap<Database.Role, Model.Role>();
 
+            CreateMap<AuditoriumUpsertRequest, Database.Auditorium>();
+            CreateMap<DirectorUpsertRequest, Database.Director>();
+            CreateMap<GenreUpsertRequest, Database.Genre>();
+            CreateMap<MovieUpsertRequest, Database.Movie>();
+            CreateMap<ProjectionUpsertRequest, Database.Projection>();
+            CreateMap<ReservationUpsertRequest, Database.Reservation>();
+            CreateMap<RatingUpsertRequest, Database.Rating>();
             CreateMap<UserInsertRequest, Database.User>();
             CreateMap<UserUpdateRequest, Database.User>();
 

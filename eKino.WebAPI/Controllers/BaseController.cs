@@ -1,4 +1,4 @@
-﻿using eKino.Services;
+﻿using eKino.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

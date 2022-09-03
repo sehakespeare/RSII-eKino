@@ -1,20 +1,21 @@
 ﻿using AutoMapper;
 using eKino.Model.SearchObjects;
 using eKino.Services.Database;
+using eKino.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace eKino.Services
+namespace eKino.Services.Implementations
 {
-    public class BaseCRUDService<T, TDb, TSearch, TInsert, TUpdate> 
-        : BaseService<T, TDb, TSearch> , ICRUDService<T, TSearch, TInsert, TUpdate>
+    public class BaseCRUDService<T, TDb, TSearch, TInsert, TUpdate>
+        : BaseService<T, TDb, TSearch>, ICRUDService<T, TSearch, TInsert, TUpdate>
             where T : class where TDb : class where TSearch : BaseSearchObject where TInsert : class where TUpdate : class
     {
         public BaseCRUDService(eKinoContext context, IMapper mapper)
-        :base(context, mapper){}
+        : base(context, mapper) { }
 
         public virtual T Insert(TInsert insert)
         {

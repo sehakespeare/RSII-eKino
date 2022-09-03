@@ -1,5 +1,6 @@
 ﻿using eKino.Model;
 using eKino.Model.Requests;
+using eKino.WinUI.Helper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
 
 namespace eKino.WinUI
 {
@@ -19,10 +21,15 @@ namespace eKino.WinUI
 
         private User _model = null;
 
-        public frmUserDetails(User model = null)
+        public frmUserDetails()
         {
             InitializeComponent();
+            Text = "New User";
+        }
+        public frmUserDetails(User model) : this()
+        {
             _model = model;
+            Text = "User Details";
         }
 
         private async void btnSave_Click(object sender, EventArgs e)
@@ -30,45 +37,53 @@ namespace eKino.WinUI
 
             if (ValidateChildren())
             {
-                var roleList = clbUloge.CheckedItems.Cast<Role>().ToList();
+                var roleList = clbRoles.CheckedItems.Cast<Role>().ToList();
                 var roleIdList = roleList.Select(x => x.RoleId).ToList();
 
                 if (_model == null)
                 {
                     UserInsertRequest insertRequest = new UserInsertRequest()
                     {
-                        FirstName = txtIme.Text,
-                        LastName = txtPrezime.Text,
+                        FirstName = txtFirstName.Text,
+                        LastName = txtLastName.Text,
                         Email = txtEmail.Text,
+                        Phone = txtPhoneNumber.Text,
                         Username = txtUsername.Text,
                         Password = txtPassword.Text,
-                        PasswordConfirm = txtPasswordPotvrda.Text,
-                        Status = chkStatus.Checked,
+                        PasswordConfirm = txtPasswordConfirm.Text,
+                        Status = chkActive.Checked,
                         RoleIdList = roleIdList,
                     };
 
                     var user = await UserService.Post<User>(insertRequest);
+                    if (user != null)
+                    {
+                        DialogResult = DialogResult.OK;
+                        Close();
+                    }
                 }
                 else
                 {
                     UserUpdateRequest updateRequest = new UserUpdateRequest()
                     {
-                        Ime = txtIme.Text,
-                        Prezime = txtPrezime.Text,
+                        FirstName = txtFirstName.Text,
+                        LastName = txtLastName.Text,
                         Email = txtEmail.Text,
+                        Phone = txtPhoneNumber.Text,
+                        Username = txtUsername.Text,
                         Password = txtPassword.Text,
-                        PasswordPotvrda = txtPasswordPotvrda.Text,
-                        Status = chkStatus.Checked,
+                        PasswordConfirm = txtPasswordConfirm.Text,
+                        Status = chkActive.Checked,
+                        RoleIdList = roleIdList
                     };
 
-                    _model = await UserService.Put<User>(_model.UserId, updateRequest);
-
+                    var user = await UserService.Put<User>(_model.UserId, updateRequest);
+                    if (user != null)
+                    {
+                        DialogResult = DialogResult.OK;
+                    }
                 }
             }
-
-
-
-
         }
 
         private async void frmUserDetails_Load(object sender, EventArgs e)
@@ -77,34 +92,71 @@ namespace eKino.WinUI
 
             if (_model != null)
             {
-                txtIme.Text = _model.FirstName;
-                txtPrezime.Text = _model.LastName;
+                txtFirstName.Text = _model.FirstName;
+                txtLastName.Text = _model.LastName;
                 txtEmail.Text = _model.Email;
+                txtPhoneNumber.Text = _model.Phone;
                 txtUsername.Text = _model.Username;
-                chkStatus.Checked = _model.Status.GetValueOrDefault(false);
+                chkActive.Checked = _model.Status.GetValueOrDefault(false);
+
+                foreach (var role in _model.UserRoles)
+                {
+                    for (int i = 0; i < clbRoles.Items.Count; i++)
+                    {
+                        if (role.RoleId == (clbRoles.Items[i] as Role).RoleId)
+                        {
+                            clbRoles.SetItemChecked(i, true);
+                        }
+                    }
+                }
             }
         }
 
         private async Task LoadRoles()
         {
             var roles = await RoleService.Get<List<Role>>();
-            clbUloge.DataSource = roles;
-            clbUloge.DisplayMember = "Name";
+            clbRoles.DataSource = roles;
+            clbRoles.DisplayMember = "Name";
         }
 
-        private void txtIme_Validating(object sender, CancelEventArgs e)
+        private void txtFirstName_Validating(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtIme.Text))
-            {
-                e.Cancel = true;
-                txtIme.Focus();
-                errorProvider.SetError(txtIme, "Name should not be left blank!");
-            }
-            else
-            {
-                e.Cancel = false;
-                errorProvider.SetError(txtIme, "");
-            }
+            Validator.ValidateControl(sender, errorProvider, e);
+        }
+
+        private void txtLastName_Validating(object sender, CancelEventArgs e)
+        {
+            Validator.ValidateControl(sender, errorProvider, e);
+        }
+
+        private void txtEmail_Validating(object sender, CancelEventArgs e)
+        {
+            Validator.ValidateControl(sender, errorProvider, e, email: true);
+        }
+
+        private void txtPhoneNumber_Validating(object sender, CancelEventArgs e)
+        {
+            Validator.ValidateControl(sender, errorProvider, e);
+        }
+
+        private void txtUsername_Validating(object sender, CancelEventArgs e)
+        {
+            Validator.ValidateControl(sender, errorProvider, e, minLength: 4);
+        }
+
+        private void txtPassword_Validating(object sender, CancelEventArgs e)
+        {
+            Validator.ValidateControl(sender, errorProvider, e);
+        }
+
+        private void txtPasswordConfirm_Validating(object sender, CancelEventArgs e)
+        {
+            Validator.ValidateControl(sender, errorProvider, e, sameAs: txtPassword.Text);
+        }
+
+        private void clbRoles_Validating(object sender, CancelEventArgs e)
+        {
+
         }
     }
 }

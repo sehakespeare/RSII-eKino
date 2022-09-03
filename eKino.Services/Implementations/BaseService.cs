@@ -1,13 +1,14 @@
 ﻿using AutoMapper;
 using eKino.Model.SearchObjects;
 using eKino.Services.Database;
+using eKino.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace eKino.Services
+namespace eKino.Services.Implementations
 {
     public class BaseService<T, TDb, TSearch> : IService<T, TSearch> where T : class where TDb : class where TSearch : BaseSearchObject
     {
@@ -27,9 +28,9 @@ namespace eKino.Services
 
             entity = AddInclude(entity, search);
 
-            if(search?.Page.HasValue == true && search?.PageSize.HasValue == true)
+            if (search?.Page.HasValue == true && search?.PageSize.HasValue == true)
             {
-                entity = entity.Take(search.PageSize.Value).Skip(search.Page.Value * search.PageSize.Value);
+                entity = entity.Skip(search.Page.Value * search.PageSize.Value).Take(search.PageSize.Value);
             }
 
             var list = entity.ToList();

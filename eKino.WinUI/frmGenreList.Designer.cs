@@ -1,6 +1,6 @@
 ﻿namespace eKino.WinUI
 {
-    partial class frmUserList
+    partial class frmGenreList
     {
         /// <summary>
         /// Required designer variable.
@@ -28,87 +28,71 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgvUsers = new System.Windows.Forms.DataGridView();
-            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RoleNames = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.dgvGenres = new System.Windows.Forms.DataGridView();
+            this.txtColName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Status = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.txtUsername = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.lblHint = new System.Windows.Forms.Label();
             this.labelHint2 = new System.Windows.Forms.Label();
             this.btnPage = new System.Windows.Forms.Button();
             this.btnNext = new System.Windows.Forms.Button();
             this.btnPrev = new System.Windows.Forms.Button();
             this.btnCreateNew = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvGenres)).BeginInit();
             this.SuspendLayout();
             // 
-            // dgvUsers
+            // dgvGenres
             // 
-            this.dgvUsers.AllowUserToAddRows = false;
-            this.dgvUsers.AllowUserToDeleteRows = false;
-            this.dgvUsers.AllowUserToResizeRows = false;
-            this.dgvUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvUsers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Email,
-            this.FirstName,
-            this.LastName,
-            this.RoleNames,
+            this.dgvGenres.AllowUserToAddRows = false;
+            this.dgvGenres.AllowUserToDeleteRows = false;
+            this.dgvGenres.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvGenres.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvGenres.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvGenres.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.txtColName,
             this.Status});
-            this.dgvUsers.Location = new System.Drawing.Point(10, 84);
-            this.dgvUsers.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dgvUsers.MultiSelect = false;
-            this.dgvUsers.Name = "dgvUsers";
-            this.dgvUsers.ReadOnly = true;
-            this.dgvUsers.RowHeadersWidth = 51;
-            this.dgvUsers.RowTemplate.Height = 40;
-            this.dgvUsers.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvUsers.Size = new System.Drawing.Size(709, 244);
-            this.dgvUsers.TabIndex = 0;
-            this.dgvUsers.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsers_CellDoubleClick);
-            this.dgvUsers.Enter += new System.EventHandler(this.dgvUsers_Enter);
-            this.dgvUsers.Leave += new System.EventHandler(this.dgvUsers_Leave);
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvGenres.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvGenres.Location = new System.Drawing.Point(10, 84);
+            this.dgvGenres.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvGenres.MultiSelect = false;
+            this.dgvGenres.Name = "dgvGenres";
+            this.dgvGenres.ReadOnly = true;
+            this.dgvGenres.RowHeadersWidth = 51;
+            this.dgvGenres.RowTemplate.Height = 40;
+            this.dgvGenres.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvGenres.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvGenres.Size = new System.Drawing.Size(709, 236);
+            this.dgvGenres.TabIndex = 0;
+            this.dgvGenres.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvGenres_CellDoubleClick);
+            this.dgvGenres.Enter += new System.EventHandler(this.dgvGenres_Enter);
+            this.dgvGenres.Leave += new System.EventHandler(this.dgvGenres_Leave);
             // 
-            // Email
+            // txtColName
             // 
-            this.Email.DataPropertyName = "Email";
-            this.Email.HeaderText = "Email address";
-            this.Email.Name = "Email";
-            this.Email.ReadOnly = true;
-            this.Email.Width = 140;
-            // 
-            // FirstName
-            // 
-            this.FirstName.DataPropertyName = "FirstName";
-            this.FirstName.HeaderText = "First name";
-            this.FirstName.MinimumWidth = 6;
-            this.FirstName.Name = "FirstName";
-            this.FirstName.ReadOnly = true;
-            this.FirstName.Width = 125;
-            // 
-            // LastName
-            // 
-            this.LastName.DataPropertyName = "LastName";
-            this.LastName.HeaderText = "Last name";
-            this.LastName.MinimumWidth = 6;
-            this.LastName.Name = "LastName";
-            this.LastName.ReadOnly = true;
-            this.LastName.Width = 125;
-            // 
-            // RoleNames
-            // 
-            this.RoleNames.DataPropertyName = "RoleNames";
-            this.RoleNames.HeaderText = "Role";
-            this.RoleNames.MinimumWidth = 6;
-            this.RoleNames.Name = "RoleNames";
-            this.RoleNames.ReadOnly = true;
-            this.RoleNames.Width = 125;
+            this.txtColName.DataPropertyName = "Name";
+            this.txtColName.HeaderText = "Name";
+            this.txtColName.MinimumWidth = 6;
+            this.txtColName.Name = "txtColName";
+            this.txtColName.ReadOnly = true;
+            this.txtColName.Width = 125;
             // 
             // Status
             // 
@@ -130,43 +114,24 @@
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
-            // txtUsername
+            // txtName
             // 
-            this.txtUsername.Location = new System.Drawing.Point(18, 32);
-            this.txtUsername.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(205, 23);
-            this.txtUsername.TabIndex = 2;
-            this.txtUsername.Enter += new System.EventHandler(this.txtUsername_Enter);
-            this.txtUsername.Leave += new System.EventHandler(this.txtUsername_Leave);
+            this.txtName.Location = new System.Drawing.Point(18, 32);
+            this.txtName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(205, 23);
+            this.txtName.TabIndex = 2;
+            this.txtName.Enter += new System.EventHandler(this.txtName_Enter);
+            this.txtName.Leave += new System.EventHandler(this.txtName_Leave);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(18, 14);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(60, 15);
+            this.label1.Size = new System.Drawing.Size(39, 15);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Username";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(239, 14);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(97, 15);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "First or last name";
-            // 
-            // txtName
-            // 
-            this.txtName.Location = new System.Drawing.Point(239, 32);
-            this.txtName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(205, 23);
-            this.txtName.TabIndex = 4;
-            this.txtName.Enter += new System.EventHandler(this.txtName_Enter);
-            this.txtName.Leave += new System.EventHandler(this.txtName_Leave);
+            this.label1.Text = "Name";
             // 
             // lblHint
             // 
@@ -192,7 +157,7 @@
             // 
             // btnPage
             // 
-            this.btnPage.Location = new System.Drawing.Point(323, 332);
+            this.btnPage.Location = new System.Drawing.Point(323, 328);
             this.btnPage.Name = "btnPage";
             this.btnPage.Size = new System.Drawing.Size(75, 23);
             this.btnPage.TabIndex = 8;
@@ -202,7 +167,7 @@
             // btnNext
             // 
             this.btnNext.Enabled = false;
-            this.btnNext.Location = new System.Drawing.Point(404, 332);
+            this.btnNext.Location = new System.Drawing.Point(404, 328);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(34, 23);
             this.btnNext.TabIndex = 9;
@@ -213,7 +178,7 @@
             // btnPrev
             // 
             this.btnPrev.Enabled = false;
-            this.btnPrev.Location = new System.Drawing.Point(283, 333);
+            this.btnPrev.Location = new System.Drawing.Point(283, 329);
             this.btnPrev.Name = "btnPrev";
             this.btnPrev.Size = new System.Drawing.Size(34, 23);
             this.btnPrev.TabIndex = 10;
@@ -223,7 +188,7 @@
             // 
             // btnCreateNew
             // 
-            this.btnCreateNew.Location = new System.Drawing.Point(10, 332);
+            this.btnCreateNew.Location = new System.Drawing.Point(10, 328);
             this.btnCreateNew.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCreateNew.Name = "btnCreateNew";
             this.btnCreateNew.Size = new System.Drawing.Size(82, 22);
@@ -232,7 +197,7 @@
             this.btnCreateNew.UseVisualStyleBackColor = true;
             this.btnCreateNew.Click += new System.EventHandler(this.btnCreateNew_Click);
             // 
-            // frmUserList
+            // frmGenreList
             // 
             this.AcceptButton = this.btnSearch;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -244,17 +209,15 @@
             this.Controls.Add(this.btnPage);
             this.Controls.Add(this.labelHint2);
             this.Controls.Add(this.lblHint);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtName);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtUsername);
+            this.Controls.Add(this.txtName);
             this.Controls.Add(this.btnSearch);
-            this.Controls.Add(this.dgvUsers);
+            this.Controls.Add(this.dgvGenres);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "frmUserList";
-            this.Text = "User List";
-            this.Load += new System.EventHandler(this.frmUser_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).EndInit();
+            this.Name = "frmGenreList";
+            this.Text = "Genre List";
+            this.Load += new System.EventHandler(this.frmGenre_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvGenres)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -262,22 +225,17 @@
 
         #endregion
 
-        private DataGridView dgvUsers;
+        private DataGridView dgvGenres;
         private Button btnSearch;
-        private TextBox txtUsername;
         private Label label1;
-        private Label label2;
         private TextBox txtName;
-        private DataGridViewTextBoxColumn Email;
-        private DataGridViewTextBoxColumn FirstName;
-        private DataGridViewTextBoxColumn LastName;
-        private DataGridViewTextBoxColumn RoleNames;
-        private DataGridViewCheckBoxColumn Status;
         private Label lblHint;
         private Label labelHint2;
         private Button btnPage;
         private Button btnNext;
         private Button btnPrev;
         private Button btnCreateNew;
+        private DataGridViewTextBoxColumn txtColName;
+        private DataGridViewCheckBoxColumn Status;
     }
 }

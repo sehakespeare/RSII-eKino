@@ -12,110 +12,135 @@ namespace eKino.WinUI
 {
     public partial class mdiMain : Form
     {
-        private int childFormNumber = 0;
-
         public mdiMain()
         {
             InitializeComponent();
         }
 
-        private void ShowNewForm(object sender, EventArgs e)
+        private void OpenForm<TForm>() where TForm : Form, new()
         {
-            Form childForm = new Form();
-            childForm.MdiParent = this;
-            childForm.Text = "Window " + childFormNumber++;
+            // Close duplicate forms
+            foreach (var item in this.MdiChildren)
+            {
+                if (item is TForm)
+                {
+                    item.Close();
+                }
+            }
+
+            TForm childForm = new()
+            {
+                MdiParent = this,
+                WindowState = FormWindowState.Maximized
+            };
             childForm.Show();
         }
-
-        private void OpenFile(object sender, EventArgs e)
+        private void listUsersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            openFileDialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
-            if (openFileDialog.ShowDialog(this) == DialogResult.OK)
+            OpenForm<frmUserList>();
+        }
+
+        private void newUserToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenForm<frmUserDetails>();
+        }
+
+        private void listAuditoriumsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void newAuditoriumToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listGenresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenForm<frmGenreList>();
+        }
+
+        private void newGenreToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listDirectorsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void newDirectorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listMoviesStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void newMovieToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listProjectionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void newProjectionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void reservationsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ticketSalesPerMovieToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void yearlySalesByMonthToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void mdiMain_Load(object sender, EventArgs e)
+        {
+            UpdateStatusBar();
+        }
+
+        private void UpdateStatusBar()
+        {
+            toolStripStatusLabel.Text = "Logged in as: " + APIService.Username;
+        }
+
+        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Logout();
+        }
+
+        private void Logout()
+        {
+            Hide();
+
+            if (new frmLogin().ShowDialog() == DialogResult.OK)
             {
-                string FileName = openFileDialog.FileName;
+                foreach (var item in this.MdiChildren)
+                {
+                    item.Close();
+                }
+                UpdateStatusBar();
+                Show();
             }
+            else
+                Application.Exit();
         }
 
-        private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            saveFileDialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
-            if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
-            {
-                string FileName = saveFileDialog.FileName;
-            }
-        }
-
-        private void ExitToolsStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void CutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void CopyToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void PasteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-        }
-
-
-        private void CascadeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LayoutMdi(MdiLayout.Cascade);
-        }
-
-        private void TileVerticalToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LayoutMdi(MdiLayout.TileVertical);
-        }
-
-        private void TileHorizontalToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LayoutMdi(MdiLayout.TileHorizontal);
-        }
-
-        private void ArrangeIconsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LayoutMdi(MdiLayout.ArrangeIcons);
-        }
-
-        private void CloseAllToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            foreach (Form childForm in MdiChildren)
-            {
-                childForm.Close();
-            }
-        }
-
-        private void pretragaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmUserList childForm = new frmUserList();
-            childForm.MdiParent = this;
-            childForm.Text = "Window " + childFormNumber++;
-            childForm.WindowState = FormWindowState.Maximized;
-            childForm.Show();
-        }
-
-        private void noviKorisnikToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmUserDetails childForm = new frmUserDetails();
-            childForm.MdiParent = this;
-            childForm.Text = "Window " + childFormNumber++;
-            childForm.WindowState = FormWindowState.Maximized;
-            childForm.Show();
-        }
-
-        private void listToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

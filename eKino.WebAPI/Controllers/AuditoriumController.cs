@@ -1,16 +1,16 @@
 ﻿using eKino.Model;
 using eKino.Model.Requests;
 using eKino.Model.SearchObjects;
-using eKino.Services;
+using eKino.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace eKino.WebAPI.Controllers
 {
-    
-    public class AuditoriumController : BaseController<Model.Role, BaseSearchObject>
+
+    public class AuditoriumController : BaseCRUDController<Model.Auditorium, AuditoriumSearchObject, AuditoriumUpsertRequest, AuditoriumUpsertRequest>
     {
-        public AuditoriumController(IService<Model.Role, BaseSearchObject> service)
+        public AuditoriumController(ICRUDService<Model.Auditorium, AuditoriumSearchObject, AuditoriumUpsertRequest, AuditoriumUpsertRequest> service)
             : base(service)
         {
         }
