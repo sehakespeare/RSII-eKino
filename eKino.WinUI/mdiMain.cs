@@ -1,4 +1,5 @@
-﻿using System;
+﻿using eKino.WinUI.Reports;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -102,12 +103,12 @@ namespace eKino.WinUI
 
         private void ticketSalesPerMovieToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            OpenForm<frmReport1>();
         }
 
-        private void yearlySalesByMonthToolStripMenuItem_Click(object sender, EventArgs e)
+        private void revenuePerMonthToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            OpenForm<frmReport2>();
         }
 
         private void mdiMain_Load(object sender, EventArgs e)

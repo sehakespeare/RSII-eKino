@@ -67,7 +67,7 @@ namespace eKino.WinUI
             }
         }
 
-        private async void frmDirectorDetails_Load(object sender, EventArgs e)
+        private void frmDirectorDetails_Load(object sender, EventArgs e)
         {
             if (_model != null)
             {

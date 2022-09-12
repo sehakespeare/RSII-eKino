@@ -366,6 +366,7 @@ namespace eKino.Services.Database
                 DateOfProjection = new DateTime(2022, 9, 13, 20, 0, 0),
                 AuditoriumId = (ProjectionID % 5) + 1,
                 MovieId = ProjectionID,
+                TicketPrice = 5.00m
             });
             modelBuilder.Entity<Projection>().HasData(new Projection()
             {
@@ -373,6 +374,7 @@ namespace eKino.Services.Database
                 DateOfProjection = new DateTime(2022, 9, 13, 20, 0, 0),
                 AuditoriumId = (ProjectionID % 5) + 1,
                 MovieId = ProjectionID,
+                TicketPrice = 5.00m
             });
             modelBuilder.Entity<Projection>().HasData(new Projection()
             {
@@ -380,6 +382,7 @@ namespace eKino.Services.Database
                 DateOfProjection = new DateTime(2022, 9, 13, 20, 0, 0),
                 AuditoriumId = (ProjectionID % 5) + 1,
                 MovieId = ProjectionID,
+                TicketPrice = 5.00m
             });
             modelBuilder.Entity<Projection>().HasData(new Projection()
             {
@@ -387,6 +390,7 @@ namespace eKino.Services.Database
                 DateOfProjection = new DateTime(2022, 9, 13, 20, 0, 0),
                 AuditoriumId = (ProjectionID % 5) + 1,
                 MovieId = ProjectionID,
+                TicketPrice = 5.00m
             });
             modelBuilder.Entity<Projection>().HasData(new Projection()
             {
@@ -394,6 +398,7 @@ namespace eKino.Services.Database
                 DateOfProjection = new DateTime(2022, 9, 13, 20, 0, 0),
                 AuditoriumId = (ProjectionID % 5) + 1,
                 MovieId = ProjectionID,
+                TicketPrice = 5.00m
             });
 
             modelBuilder.Entity<Projection>().HasData(new Projection()
@@ -402,6 +407,7 @@ namespace eKino.Services.Database
                 DateOfProjection = new DateTime(2022, 9, 14, 20, 0, 0),
                 AuditoriumId = (ProjectionID % 5) + 1,
                 MovieId = ProjectionID,
+                TicketPrice = 7.50m
             });
             modelBuilder.Entity<Projection>().HasData(new Projection()
             {
@@ -409,6 +415,7 @@ namespace eKino.Services.Database
                 DateOfProjection = new DateTime(2022, 9, 14, 20, 0, 0),
                 AuditoriumId = (ProjectionID % 5) + 1,
                 MovieId = ProjectionID,
+                TicketPrice = 7.50m
             });
             modelBuilder.Entity<Projection>().HasData(new Projection()
             {
@@ -416,6 +423,7 @@ namespace eKino.Services.Database
                 DateOfProjection = new DateTime(2022, 9, 14, 20, 0, 0),
                 AuditoriumId = (ProjectionID % 5) + 1,
                 MovieId = ProjectionID,
+                TicketPrice = 7.50m
             });
             modelBuilder.Entity<Projection>().HasData(new Projection()
             {
@@ -423,6 +431,7 @@ namespace eKino.Services.Database
                 DateOfProjection = new DateTime(2022, 9, 14, 20, 0, 0),
                 AuditoriumId = (ProjectionID % 5) + 1,
                 MovieId = ProjectionID,
+                TicketPrice = 7.50m
             });
             modelBuilder.Entity<Projection>().HasData(new Projection()
             {
@@ -430,6 +439,7 @@ namespace eKino.Services.Database
                 DateOfProjection = new DateTime(2022, 9, 14, 20, 0, 0),
                 AuditoriumId = (ProjectionID % 5) + 1,
                 MovieId = ProjectionID,
+                TicketPrice = 7.50m
             });
 
             modelBuilder.Entity<Projection>().HasData(new Projection()
@@ -438,6 +448,7 @@ namespace eKino.Services.Database
                 DateOfProjection = new DateTime(2022, 9, 15, 20, 0, 0),
                 AuditoriumId = (ProjectionID % 5) + 1,
                 MovieId = ProjectionID,
+                TicketPrice = 10.00m
             });
             modelBuilder.Entity<Projection>().HasData(new Projection()
             {
@@ -445,6 +456,7 @@ namespace eKino.Services.Database
                 DateOfProjection = new DateTime(2022, 9, 15, 20, 0, 0),
                 AuditoriumId = (ProjectionID % 5) + 1,
                 MovieId = ProjectionID,
+                TicketPrice = 10.00m
             });
             modelBuilder.Entity<Projection>().HasData(new Projection()
             {
@@ -452,6 +464,7 @@ namespace eKino.Services.Database
                 DateOfProjection = new DateTime(2022, 9, 15, 20, 0, 0),
                 AuditoriumId = (ProjectionID % 5) + 1,
                 MovieId = ProjectionID,
+                TicketPrice = 10.00m
             });
             modelBuilder.Entity<Projection>().HasData(new Projection()
             {
@@ -459,6 +472,7 @@ namespace eKino.Services.Database
                 DateOfProjection = new DateTime(2022, 9, 15, 20, 0, 0),
                 AuditoriumId = (ProjectionID % 5) + 1,
                 MovieId = ProjectionID,
+                TicketPrice = 10.00m
             });
             modelBuilder.Entity<Projection>().HasData(new Projection()
             {
@@ -466,6 +480,149 @@ namespace eKino.Services.Database
                 DateOfProjection = new DateTime(2022, 9, 15, 20, 0, 0),
                 AuditoriumId = (ProjectionID % 5) + 1,
                 MovieId = ProjectionID,
+                TicketPrice = 10.00m
+            });
+
+            int ReservationID = 0;
+            modelBuilder.Entity<Reservation>().HasData(new Reservation()
+            {
+                ReservationId = ++ReservationID,
+                ProjectionId = 1,
+                UserId = 3,
+                Row = 1,
+                Column = 1,
+                NumTickets = 2,
+                DateOfReservation = new DateTime(2022, 9, 11, 15, 0, 0)
+            });
+            modelBuilder.Entity<Reservation>().HasData(new Reservation()
+            {
+                ReservationId = ++ReservationID,
+                ProjectionId = 2,
+                UserId = 3,
+                Row = 1,
+                Column = 1,
+                NumTickets = 2,
+                DateOfReservation = new DateTime(2022, 9, 12, 15, 0, 0)
+            });
+            modelBuilder.Entity<Reservation>().HasData(new Reservation()
+            {
+                ReservationId = ++ReservationID,
+                ProjectionId = 3,
+                UserId = 3,
+                Row = 1,
+                Column = 1,
+                NumTickets = 1,
+                DateOfReservation = new DateTime(2022, 9, 13, 15, 0, 0)
+            });
+            modelBuilder.Entity<Reservation>().HasData(new Reservation()
+            {
+                ReservationId = ++ReservationID,
+                ProjectionId = 4,
+                UserId = 3,
+                Row = 1,
+                Column = 1,
+                NumTickets = 2,
+                DateOfReservation = new DateTime(2022, 9, 14, 15, 0, 0)
+            });
+            modelBuilder.Entity<Reservation>().HasData(new Reservation()
+            {
+                ReservationId = ++ReservationID,
+                ProjectionId = 2,
+                UserId = 4,
+                Row = 1,
+                Column = 1,
+                NumTickets = 3,
+                DateOfReservation = new DateTime(2022, 8, 12, 15, 0, 0)
+            });
+            modelBuilder.Entity<Reservation>().HasData(new Reservation()
+            {
+                ReservationId = ++ReservationID,
+                ProjectionId = 3,
+                UserId = 5,
+                Row = 1,
+                Column = 1,
+                NumTickets = 6,
+                DateOfReservation = new DateTime(2022, 7, 12, 15, 0, 0)
+            });
+            modelBuilder.Entity<Reservation>().HasData(new Reservation()
+            {
+                ReservationId = ++ReservationID,
+                ProjectionId = 4,
+                UserId = 6,
+                Row = 1,
+                Column = 1,
+                NumTickets = 2,
+                DateOfReservation = new DateTime(2022, 6, 12, 15, 0, 0)
+            });
+            modelBuilder.Entity<Reservation>().HasData(new Reservation()
+            {
+                ReservationId = ++ReservationID,
+                ProjectionId = 4,
+                UserId = 6,
+                Row = 1,
+                Column = 1,
+                NumTickets = 2,
+                DateOfReservation = new DateTime(2022, 5, 12, 15, 0, 0)
+            });
+            modelBuilder.Entity<Reservation>().HasData(new Reservation()
+            {
+                ReservationId = ++ReservationID,
+                ProjectionId = 5,
+                UserId = 7,
+                Row = 1,
+                Column = 1,
+                NumTickets = 2,
+                DateOfReservation = new DateTime(2022, 4, 12, 15, 0, 0)
+            });
+            modelBuilder.Entity<Reservation>().HasData(new Reservation()
+            {
+                ReservationId = ++ReservationID,
+                ProjectionId = 6,
+                UserId = 8,
+                Row = 1,
+                Column = 1,
+                NumTickets = 2,
+                DateOfReservation = new DateTime(2022, 3, 12, 15, 0, 0)
+            });
+            modelBuilder.Entity<Reservation>().HasData(new Reservation()
+            {
+                ReservationId = ++ReservationID,
+                ProjectionId = 7,
+                UserId = 9,
+                Row = 1,
+                Column = 1,
+                NumTickets = 2,
+                DateOfReservation = new DateTime(2022, 2, 12, 15, 0, 0)
+            });
+            modelBuilder.Entity<Reservation>().HasData(new Reservation()
+            {
+                ReservationId = ++ReservationID,
+                ProjectionId = 8,
+                UserId = 10,
+                Row = 1,
+                Column = 1,
+                NumTickets = 2,
+                DateOfReservation = new DateTime(2022, 1, 12, 15, 0, 0)
+            });
+            modelBuilder.Entity<Reservation>().HasData(new Reservation()
+            {
+                ReservationId = ++ReservationID,
+                ProjectionId = 9,
+                UserId = 11,
+                Row = 1,
+                Column = 1,
+                NumTickets = 2,
+                DateOfReservation = new DateTime(2021, 12, 12, 15, 0, 0)
+            });
+            modelBuilder.Entity<Reservation>().HasData(new Reservation()
+            {
+                ReservationId = ++ReservationID,
+                ProjectionId = 10,
+                UserId = 12,
+                Row = 1,
+                Column = 1,
+                NumTickets = 2,
+                DateOfReservation = new DateTime(2021, 11, 12, 15, 0, 0)
             });
 
             #endregion

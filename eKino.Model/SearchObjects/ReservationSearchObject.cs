@@ -9,5 +9,8 @@ namespace eKino.Model.SearchObjects
     {
         public int? UserId { get; set; }
         public int? ProjectionId { get; set; }
+        public string MovieTitle { get; set; }
+        public DateTime? From { get; set; }
+        public DateTime? To { get; set; }
     }
 }

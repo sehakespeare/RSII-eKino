@@ -12,6 +12,7 @@ namespace eKino.Model
         public virtual Auditorium Auditorium { get; set; }
         public int MovieId { get; set; }
         public virtual Movie Movie { get; set; }
+        public decimal TicketPrice { get; set; }
         public override string ToString()
         {
             string s = "";

@@ -45,6 +45,7 @@ namespace eKino.WinUI
                     AuditoriumId = (cmbAuditorium.SelectedItem as Auditorium).AuditoriumId,
                     DateOfProjection = new DateTime(date.Year, date.Month, date.Day, date.Hour, date.Minute, 0),
                     MovieId = (cmbMovie.SelectedItem as Movie).MovieId,
+                    TicketPrice = numTicketPrice.Value
                 };
                 
                 Model.Projection entity;
@@ -73,6 +74,7 @@ namespace eKino.WinUI
 
             if (_model != null)
             {
+                numTicketPrice.Value = _model.TicketPrice;
                 dtpDate.Value = _model.DateOfProjection;
                 await task2;
                 cmbAuditorium.SelectedValue = _model.AuditoriumId;

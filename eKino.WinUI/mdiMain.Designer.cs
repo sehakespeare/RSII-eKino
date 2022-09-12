@@ -74,7 +74,7 @@
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
-            this.menuStrip.Size = new System.Drawing.Size(738, 24);
+            this.menuStrip.Size = new System.Drawing.Size(984, 24);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "MenuStrip";
             // 
@@ -243,8 +243,8 @@
             // 
             this.yearlySalesByMonthToolStripMenuItem.Name = "yearlySalesByMonthToolStripMenuItem";
             this.yearlySalesByMonthToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
-            this.yearlySalesByMonthToolStripMenuItem.Text = "Yearly sales by month";
-            this.yearlySalesByMonthToolStripMenuItem.Click += new System.EventHandler(this.yearlySalesByMonthToolStripMenuItem_Click);
+            this.yearlySalesByMonthToolStripMenuItem.Text = "Revenue per month";
+            this.yearlySalesByMonthToolStripMenuItem.Click += new System.EventHandler(this.revenuePerMonthToolStripMenuItem_Click);
             // 
             // statusStrip
             // 
@@ -255,7 +255,7 @@
             this.statusStrip.Location = new System.Drawing.Point(0, 501);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Padding = new System.Windows.Forms.Padding(1, 0, 17, 0);
-            this.statusStrip.Size = new System.Drawing.Size(738, 22);
+            this.statusStrip.Size = new System.Drawing.Size(984, 22);
             this.statusStrip.TabIndex = 2;
             this.statusStrip.Text = "StatusStrip";
             // 
@@ -286,7 +286,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(738, 523);
+            this.ClientSize = new System.Drawing.Size(984, 523);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuStrip);
             this.IsMdiContainer = true;

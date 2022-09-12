@@ -32,6 +32,21 @@ namespace eKino.Services.Implementations
             {
                 filteredQuery = filteredQuery.Where(x => x.ProjectionId == search.ProjectionId);
             }
+
+            if (!string.IsNullOrEmpty(search?.MovieTitle))
+            {
+                filteredQuery = filteredQuery.Where(x => x.Projection.Movie.Title.Contains(search.MovieTitle));
+            }
+
+            if (search?.From != null)
+            {
+                filteredQuery = filteredQuery.Where(x => x.DateOfReservation.Date >= search.From.Value.Date);
+            }
+
+            if (search?.To != null)
+            {
+                filteredQuery = filteredQuery.Where(x => x.DateOfReservation.Date <= search.To.Value.Date);
+            }
             filteredQuery = filteredQuery.Where(x => !x.IsDeleted);
 
             return filteredQuery;

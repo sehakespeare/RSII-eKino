@@ -59,7 +59,7 @@ namespace eKino.WinUI
             }
         }
 
-        private async void frmAuditoriumDetails_Load(object sender, EventArgs e)
+        private void frmAuditoriumDetails_Load(object sender, EventArgs e)
         {
             if (_model != null)
             {

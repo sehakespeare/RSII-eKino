@@ -59,7 +59,7 @@ namespace eKino.WinUI
             }
         }
 
-        private async void frmGenreDetails_Load(object sender, EventArgs e)
+        private void frmGenreDetails_Load(object sender, EventArgs e)
         {
             if (_model != null)
             {

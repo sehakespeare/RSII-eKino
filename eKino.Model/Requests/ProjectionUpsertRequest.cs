@@ -13,5 +13,6 @@ namespace eKino.Model.Requests
         public int AuditoriumId { get; set; }
         [Required]
         public int MovieId { get; set; }
+        public decimal TicketPrice { get; set; }
     }
 }
