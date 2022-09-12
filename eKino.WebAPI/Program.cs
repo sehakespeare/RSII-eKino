@@ -50,6 +50,7 @@ builder.Services.AddTransient<ICRUDService<eKino.Model.Movie, MovieSearchObject,
 builder.Services.AddTransient<ICRUDService<eKino.Model.Projection, ProjectionSearchObject, ProjectionUpsertRequest, ProjectionUpsertRequest>, BaseCRUDService<eKino.Model.Projection, Projection, ProjectionSearchObject, ProjectionUpsertRequest, ProjectionUpsertRequest>>();
 builder.Services.AddTransient<ICRUDService<eKino.Model.Rating, RatingSearchObject, RatingUpsertRequest, RatingUpsertRequest>, BaseCRUDService<eKino.Model.Rating, Rating, RatingSearchObject, RatingUpsertRequest, RatingUpsertRequest>>();
 builder.Services.AddTransient<ICRUDService<eKino.Model.Reservation, ReservationSearchObject, ReservationUpsertRequest, ReservationUpsertRequest>, BaseCRUDService<eKino.Model.Reservation, Reservation, ReservationSearchObject, ReservationUpsertRequest, ReservationUpsertRequest>>();
+builder.Services.AddTransient<ICRUDService<eKino.Model.Transaction, TransactionSearchObject, TransactionUpsertRequest, TransactionUpsertRequest>, BaseCRUDService<eKino.Model.Transaction, Transaction, TransactionSearchObject, TransactionUpsertRequest, TransactionUpsertRequest>>();
 
 builder.Services.AddAutoMapper(typeof(IUsersService));
 
