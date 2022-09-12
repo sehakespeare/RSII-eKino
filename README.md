@@ -38,7 +38,7 @@
   ```
 5. Otvoriti ekinomobile folder
   ```
-  cd eeinomobile
+  cd ekinomobile
   ```
 6. Dohvatanje dependency-a
   ```
