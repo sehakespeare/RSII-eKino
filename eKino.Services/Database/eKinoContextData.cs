@@ -120,7 +120,7 @@ namespace eKino.Services.Database
                 Description = "Thor enlists the help of Valkyrie, Korg and ex-girlfriend Jane Foster to fight Gorr the God Butcher, who intends to make the gods extinct.",
                 Year = 2022,
                 RunningTime = 1 * 60 + 58,
-                Photo = File.ReadAllBytes("../eKino.Services/Images/thor.jpg"),
+                Photo = File.ReadAllBytes("Images/thor.jpg"),
             });
             modelBuilder.Entity<MovieGenre>().HasData(
                     new MovieGenre { MovieGenreId = ++MovieGenreID, MovieId = 1, GenreId = 1 },
@@ -134,7 +134,7 @@ namespace eKino.Services.Database
                 Description = "After thirty years, Maverick is still pushing the envelope as a top naval aviator, but must confront ghosts of his past when he leads TOP GUN's elite graduates on a mission that demands the ultimate sacrifice from those chosen to fly it.",
                 Year = 2022,
                 RunningTime = 2 * 60 + 10,
-                Photo = File.ReadAllBytes("../eKino.Services/Images/topgunmaverick.jpg"),
+                Photo = File.ReadAllBytes("Images/topgunmaverick.jpg"),
             });
             modelBuilder.Entity<MovieGenre>().HasData(
                     new MovieGenre { MovieGenreId = ++MovieGenreID, MovieId = 2, GenreId = 1 },
@@ -148,7 +148,7 @@ namespace eKino.Services.Database
                 Description = "Five assassins aboard a fast moving bullet train find out their missions have something in common.",
                 Year = 2022,
                 RunningTime = 2 * 60 + 7,
-                Photo = File.ReadAllBytes("../eKino.Services/Images/bullettrain.jpg"),
+                Photo = File.ReadAllBytes("Images/bullettrain.jpg"),
             });
             modelBuilder.Entity<MovieGenre>().HasData(
                     new MovieGenre { MovieGenreId = ++MovieGenreID, MovieId = 3, GenreId = 1 },
@@ -163,7 +163,7 @@ namespace eKino.Services.Database
                 Description = "A young boy learns that a superhero who was thought to have gone missing after an epic battle twenty years ago may in fact still be around.",
                 Year = 2022,
                 RunningTime = 1 * 60 + 42,
-                Photo = File.ReadAllBytes("../eKino.Services/Images/samaritan.jpg"),
+                Photo = File.ReadAllBytes("Images/samaritan.jpg"),
             });
             modelBuilder.Entity<MovieGenre>().HasData(
                     new MovieGenre { MovieGenreId = ++MovieGenreID, MovieId = 4, GenreId = 1 },
@@ -178,7 +178,7 @@ namespace eKino.Services.Database
                 Description = "A meek Hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron.",
                 Year = 2001,
                 RunningTime = 2 * 60 + 58,
-                Photo = File.ReadAllBytes("../eKino.Services/Images/fellowship.jpg"),
+                Photo = File.ReadAllBytes("Images/fellowship.jpg"),
             });
             modelBuilder.Entity<MovieGenre>().HasData(
                     new MovieGenre { MovieGenreId = ++MovieGenreID, MovieId = 5, GenreId = 1 },
@@ -193,7 +193,7 @@ namespace eKino.Services.Database
                 Description = "Four years after the destruction of Isla Nublar, Biosyn operatives attempt to track down Maisie Lockwood, while Dr Ellie Sattler investigates a genetically engineered swarm of giant insects.",
                 Year = 2022,
                 RunningTime = 2 * 60 + 27,
-                Photo = File.ReadAllBytes("../eKino.Services/Images/dominion.jpg"),
+                Photo = File.ReadAllBytes("Images/dominion.jpg"),
             });
             modelBuilder.Entity<MovieGenre>().HasData(
                     new MovieGenre { MovieGenreId = ++MovieGenreID, MovieId = 6, GenreId = 1 },
@@ -208,7 +208,7 @@ namespace eKino.Services.Database
                 Description = "A father and his two teenage daughters find themselves hunted by a massive rogue lion intent on proving that the Savanna has but one apex predator.",
                 Year = 2022,
                 RunningTime = 1 * 60 + 33,
-                Photo = File.ReadAllBytes("../eKino.Services/Images/beast.jpg"),
+                Photo = File.ReadAllBytes("Images/beast.jpg"),
             });
             modelBuilder.Entity<MovieGenre>().HasData(
                     new MovieGenre { MovieGenreId = ++MovieGenreID, MovieId = 7, GenreId = 10 },
@@ -223,7 +223,7 @@ namespace eKino.Services.Database
                 Description = "A paraplegic Marine dispatched to the moon Pandora on a unique mission becomes torn between following his orders and protecting the world he feels is his home.",
                 Year = 2009,
                 RunningTime = 2 * 60 + 42,
-                Photo = File.ReadAllBytes("../eKino.Services/Images/avatar.jpg"),
+                Photo = File.ReadAllBytes("Images/avatar.jpg"),
             });
             modelBuilder.Entity<MovieGenre>().HasData(
                     new MovieGenre { MovieGenreId = ++MovieGenreID, MovieId = 8, GenreId = 1 },
@@ -238,7 +238,7 @@ namespace eKino.Services.Database
                 Description = "A bounty hunting scam joins two men in an uneasy alliance against a third in a race to find a fortune in gold buried in a remote cemetery.",
                 Year = 1966,
                 RunningTime = 2 * 60 + 58,
-                Photo = File.ReadAllBytes("../eKino.Services/Images/goodbadugly.jpg"),
+                Photo = File.ReadAllBytes("Images/goodbadugly.jpg"),
             });
             modelBuilder.Entity<MovieGenre>().HasData(
                     new MovieGenre { MovieGenreId = ++MovieGenreID, MovieId = 9, GenreId = 10 },
@@ -252,7 +252,7 @@ namespace eKino.Services.Database
                 Description = "When a sadistic serial killer begins murdering key political figures in Gotham, Batman is forced to investigate the city's hidden corruption and question his family's involvement.",
                 Year = 2022,
                 RunningTime = 2 * 60 + 56,
-                Photo = File.ReadAllBytes("../eKino.Services/Images/batman.jpg"),
+                Photo = File.ReadAllBytes("Images/batman.jpg"),
             });
             modelBuilder.Entity<MovieGenre>().HasData(
                     new MovieGenre { MovieGenreId = ++MovieGenreID, MovieId = 10, GenreId = 1 },
@@ -267,7 +267,7 @@ namespace eKino.Services.Database
                 Description = "A puppet is brought to life by a fairy, who assigns him to lead a virtuous life in order to become a real boy.",
                 Year = 2022,
                 RunningTime = 1 * 60 + 45,
-                Photo = File.ReadAllBytes("../eKino.Services/Images/pinocchio.jpg"),
+                Photo = File.ReadAllBytes("Images/pinocchio.jpg"),
             });
             modelBuilder.Entity<MovieGenre>().HasData(
                     new MovieGenre { MovieGenreId = ++MovieGenreID, MovieId = 11, GenreId = 1 },
@@ -282,7 +282,7 @@ namespace eKino.Services.Database
                 Description = "A young woman takes a trip to romantic Verona, Italy, after a breakup, only to find that the villa she reserved was double-booked, and she'll have to share her vacation with a cynical British man.",
                 Year = 2022,
                 RunningTime = 1 * 60 + 54,
-                Photo = File.ReadAllBytes("../eKino.Services/Images/loveinthevilla.jpg"),
+                Photo = File.ReadAllBytes("Images/loveinthevilla.jpg"),
             });
             modelBuilder.Entity<MovieGenre>().HasData(
                     new MovieGenre { MovieGenreId = ++MovieGenreID, MovieId = 12, GenreId = 4 },
@@ -296,7 +296,7 @@ namespace eKino.Services.Database
                 Description = "In 1979, a group of young filmmakers set out to make an adult film in rural Texas, but when their reclusive, elderly hosts catch them in the act, the cast find themselves fighting for their lives.",
                 Year = 2022,
                 RunningTime = 1 * 60 + 45,
-                Photo = File.ReadAllBytes("../eKino.Services/Images/x.jpg"),
+                Photo = File.ReadAllBytes("Images/x.jpg"),
             });
             modelBuilder.Entity<MovieGenre>().HasData(
                     new MovieGenre { MovieGenreId = ++MovieGenreID, MovieId = 13, GenreId = 3 },
@@ -311,7 +311,7 @@ namespace eKino.Services.Database
                 Description = "A fictionalized chronicle of the inner life of Marilyn Monroe.",
                 Year = 2022,
                 RunningTime = 2 * 60 + 46,
-                Photo = File.ReadAllBytes("../eKino.Services/Images/blonde.jpg"),
+                Photo = File.ReadAllBytes("Images/blonde.jpg"),
             });
             modelBuilder.Entity<MovieGenre>().HasData(
                     new MovieGenre { MovieGenreId = ++MovieGenreID, MovieId = 14, GenreId = 4 },
@@ -326,7 +326,7 @@ namespace eKino.Services.Database
                 Description = "From visionary director Robert Eggers comes The Northman, an action-filled epic that follows a young Viking prince on his quest to avenge his father's murder.",
                 Year = 2022,
                 RunningTime = 2 * 60 + 17,
-                Photo = File.ReadAllBytes("../eKino.Services/Images/northman.jpg"),
+                Photo = File.ReadAllBytes("Images/northman.jpg"),
             });
             modelBuilder.Entity<MovieGenre>().HasData(
                     new MovieGenre { MovieGenreId = ++MovieGenreID, MovieId = 15, GenreId = 1 },
