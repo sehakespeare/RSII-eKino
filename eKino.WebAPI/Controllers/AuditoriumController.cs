@@ -7,10 +7,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace eKino.WebAPI.Controllers
 {
-
+    [ApiController]
+    [Route("[controller]")]
+    [Authorize]
     public class AuditoriumController : BaseCRUDController<Model.Auditorium, AuditoriumSearchObject, AuditoriumUpsertRequest, AuditoriumUpsertRequest>
     {
-        public AuditoriumController(ICRUDService<Model.Auditorium, AuditoriumSearchObject, AuditoriumUpsertRequest, AuditoriumUpsertRequest> service)
+        public AuditoriumController(IAuditoriumService service)
             : base(service)
         {
         }

@@ -7,7 +7,7 @@ namespace eKino.Model.SearchObjects
 {
     public class ReservationSearchObject : BaseSearchObject
     {
-        public int UserId { get; set; }
-        public int ProjectionId { get; set; }
+        public int? UserId { get; set; }
+        public int? ProjectionId { get; set; }
     }
 }

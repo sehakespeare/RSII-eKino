@@ -7,7 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace eKino.Filters
+namespace eKino.WebAPI.Filters
 {
     public class ErrorFilter : ExceptionFilterAttribute
     {
@@ -20,7 +20,7 @@ namespace eKino.Filters
             }
             else
             {
-                context.ModelState.AddModelError("ERROR", "Server error");
+                context.ModelState.AddModelError("ERROR", context.Exception.Message);
                 context.HttpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
             }
 

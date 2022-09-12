@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace eKino.Model
 {
-    public partial class Projection
+    public partial class Projection : SoftDeletableEntity
     {
         public int ProjectionId { get; set; }
         public DateTime DateOfProjection { get; set; }
@@ -12,5 +12,17 @@ namespace eKino.Model
         public virtual Auditorium Auditorium { get; set; }
         public int MovieId { get; set; }
         public virtual Movie Movie { get; set; }
+        public override string ToString()
+        {
+            string s = "";
+            if(Movie != null)
+            {
+                s = Movie.Title;
+                if (s == "Any")
+                    return s;
+            }
+            s += " - " + DateOfProjection.ToShortDateString() + " " + DateOfProjection.ToShortTimeString();
+            return s;
+        }
     }
 }

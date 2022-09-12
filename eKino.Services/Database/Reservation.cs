@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace eKino.Services.Database
 {
-    public partial class Reservation
+    public partial class Reservation : SoftDeletableEntity
     {
         public int ReservationId { get; set; }
         public int UserId { get; set; }

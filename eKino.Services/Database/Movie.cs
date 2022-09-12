@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace eKino.Services.Database
 {
-    public partial class Movie
+    public partial class Movie : SoftDeletableEntity
     {
         public Movie()
         {

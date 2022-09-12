@@ -32,7 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvGenres = new System.Windows.Forms.DataGridView();
             this.txtColName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Status = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -61,7 +61,7 @@
             this.dgvGenres.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvGenres.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.txtColName,
-            this.Status});
+            this.Delete});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -81,6 +81,7 @@
             this.dgvGenres.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvGenres.Size = new System.Drawing.Size(709, 236);
             this.dgvGenres.TabIndex = 0;
+            this.dgvGenres.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvGenres_CellContentClick);
             this.dgvGenres.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvGenres_CellDoubleClick);
             this.dgvGenres.Enter += new System.EventHandler(this.dgvGenres_Enter);
             this.dgvGenres.Leave += new System.EventHandler(this.dgvGenres_Leave);
@@ -94,14 +95,13 @@
             this.txtColName.ReadOnly = true;
             this.txtColName.Width = 125;
             // 
-            // Status
+            // Delete
             // 
-            this.Status.DataPropertyName = "Status";
-            this.Status.HeaderText = "Status";
-            this.Status.MinimumWidth = 6;
-            this.Status.Name = "Status";
-            this.Status.ReadOnly = true;
-            this.Status.Width = 125;
+            this.Delete.HeaderText = "";
+            this.Delete.Name = "Delete";
+            this.Delete.ReadOnly = true;
+            this.Delete.Text = "Delete";
+            this.Delete.UseColumnTextForButtonValue = true;
             // 
             // btnSearch
             // 
@@ -215,6 +215,7 @@
             this.Controls.Add(this.dgvGenres);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmGenreList";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Genre List";
             this.Load += new System.EventHandler(this.frmGenre_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvGenres)).EndInit();
@@ -236,6 +237,6 @@
         private Button btnPrev;
         private Button btnCreateNew;
         private DataGridViewTextBoxColumn txtColName;
-        private DataGridViewCheckBoxColumn Status;
+        private DataGridViewButtonColumn Delete;
     }
 }

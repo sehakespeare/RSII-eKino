@@ -7,10 +7,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace eKino.WebAPI.Controllers
 {
-
+    [ApiController]
+    [Route("[controller]")]
+    [Authorize]
     public class ReservationController : BaseCRUDController<Model.Reservation, ReservationSearchObject, ReservationUpsertRequest, ReservationUpsertRequest>
     {
-        public ReservationController(ICRUDService<Model.Reservation, ReservationSearchObject, ReservationUpsertRequest, ReservationUpsertRequest> service)
+        public ReservationController(IReservationService service)
             : base(service)
         {
         }

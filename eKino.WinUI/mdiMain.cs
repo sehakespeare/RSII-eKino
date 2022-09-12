@@ -47,12 +47,12 @@ namespace eKino.WinUI
 
         private void listAuditoriumsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            OpenForm<frmAuditoriumList>();
         }
 
         private void newAuditoriumToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            OpenForm<frmAuditoriumDetails>();
         }
 
         private void listGenresToolStripMenuItem_Click(object sender, EventArgs e)
@@ -62,42 +62,42 @@ namespace eKino.WinUI
 
         private void newGenreToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            OpenForm<frmGenreDetails>();
         }
 
         private void listDirectorsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            OpenForm<frmDirectorList>();
         }
 
         private void newDirectorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            OpenForm<frmDirectorDetails>();
         }
 
         private void listMoviesStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            OpenForm<frmMovieList>();
         }
 
         private void newMovieToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            OpenForm<frmMovieDetails>();
         }
 
         private void listProjectionsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            OpenForm<frmProjectionList>();
         }
 
         private void newProjectionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            OpenForm<frmProjectionDetails>();
         }
 
         private void reservationsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            OpenForm<frmReservationList>();
         }
 
         private void ticketSalesPerMovieToolStripMenuItem_Click(object sender, EventArgs e)

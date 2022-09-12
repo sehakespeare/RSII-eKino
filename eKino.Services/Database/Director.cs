@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace eKino.Services.Database
 {
-    public partial class Director
+    public partial class Director : SoftDeletableEntity
     {
         public int DirectorId { get; set; }
         public string FullName { get; set; } = null!;

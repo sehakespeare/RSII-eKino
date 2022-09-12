@@ -10,8 +10,8 @@ namespace eKino.WebAPI
 {
     public class BasicAuthenticationHandler : AuthenticationHandler<AuthenticationSchemeOptions>
     {
-        public IUsersService UsersService { get; set; }
-        public BasicAuthenticationHandler(IUsersService usersService, IOptionsMonitor<AuthenticationSchemeOptions> options, ILoggerFactory logger, UrlEncoder encoder, ISystemClock clock)
+        public IUserService UsersService { get; set; }
+        public BasicAuthenticationHandler(IUserService usersService, IOptionsMonitor<AuthenticationSchemeOptions> options, ILoggerFactory logger, UrlEncoder encoder, ISystemClock clock)
             : base(options, logger, encoder, clock)
         {
             UsersService = usersService;

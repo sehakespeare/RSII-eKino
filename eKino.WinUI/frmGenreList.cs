@@ -31,6 +31,7 @@ namespace eKino.WinUI
 
         private async void btnSearch_Click(object sender, EventArgs e)
         {
+            Page = 0;
             await LoadDataGrid();
         }
 
@@ -51,21 +52,21 @@ namespace eKino.WinUI
 
         private async void dgvGenres_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            //if (dgvGenres.SelectedRows.Count > 0 && dgvGenres.SelectedRows[0].DataBoundItem is Genre item)
-            //{
-            //    if (new frmGenreDetails(item).ShowDialog() == DialogResult.OK)
-            //    {
-            //        await LoadDataGrid();
-            //    }
-            //}
+            if (dgvGenres.SelectedRows.Count > 0 && dgvGenres.SelectedRows[0].DataBoundItem is Genre item)
+            {
+                if (new frmGenreDetails(item).ShowDialog() == DialogResult.OK)
+                {
+                    await LoadDataGrid();
+                }
+            }
         }
 
         private async void btnCreateNew_Click(object sender, EventArgs e)
         {
-            //if (new frmGenreDetails().ShowDialog() == DialogResult.OK)
-            //{
-            //    await LoadDataGrid();
-            //}
+            if (new frmGenreDetails().ShowDialog() == DialogResult.OK)
+            {
+                await LoadDataGrid();
+            }
         }
 
         private void txtName_Enter(object sender, EventArgs e)
@@ -92,7 +93,17 @@ namespace eKino.WinUI
         {
             Page++;
             await LoadDataGrid();
+            bool noMoreEntries = dgvGenres.RowCount == 0;
+            if (noMoreEntries)
+            {
+                Page--;
+                await LoadDataGrid();
+            }
             UpdatePagination();
+            if (noMoreEntries)
+            {
+                btnNext.Enabled = false;
+            }
         }
 
         private async void btnPrev_Click(object sender, EventArgs e)
@@ -108,5 +119,25 @@ namespace eKino.WinUI
             btnPage.Text = $"Page {Page + 1}";
         }
 
+        private async void dgvGenres_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            if (e.ColumnIndex == dgvGenres.ColumnCount - 1)
+            {
+                if (dgvGenres.Rows[e.RowIndex].DataBoundItem is Genre row)
+                {
+                    if (MessageBox.Show("Are you sure?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
+                    {
+                        return;
+                    }
+
+                    var result = await GenresService.Delete<Model.Genre>(row.GenreId);
+                    if (result != null)
+                    {
+                        await LoadDataGrid();
+                    }
+                }
+            }
+        }
     }
 }

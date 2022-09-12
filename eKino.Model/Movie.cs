@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace eKino.Model
 {
-    public partial class Movie
+    public partial class Movie : SoftDeletableEntity
     {
 
         public int MovieId { get; set; }
@@ -15,5 +15,10 @@ namespace eKino.Model
         public byte[] Photo { get; set; }
         public int DirectorId { get; set; }
         public virtual Director Director { get; set; }
+        public ICollection<MovieGenre> MovieGenres { get; set; }
+        public override string ToString()
+        {
+            return Title;
+        }
     }
 }

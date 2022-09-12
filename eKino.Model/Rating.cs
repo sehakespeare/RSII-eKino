@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace eKino.Model
 {
-    public partial class Rating
+    public partial class Rating : SoftDeletableEntity
     {
         public int RatingId { get; set; }
         public DateTime DateOfRating { get; set; }

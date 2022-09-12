@@ -136,7 +136,7 @@ namespace eKino.WinUI
 
         private void txtPhoneNumber_Validating(object sender, CancelEventArgs e)
         {
-            Validator.ValidateControl(sender, errorProvider, e);
+            Validator.ValidateControl(sender, errorProvider, e, regex: @"^[+]?[0-9]{1,3}\s?[0-9]{2,3}\s?[0-9]{3}\s?[0-9]{3,4}$", formatHint: "(+)XXX (X)XX XXX XXX(X), spaces are optional");
         }
 
         private void txtUsername_Validating(object sender, CancelEventArgs e)
@@ -146,17 +146,15 @@ namespace eKino.WinUI
 
         private void txtPassword_Validating(object sender, CancelEventArgs e)
         {
-            Validator.ValidateControl(sender, errorProvider, e);
+            if(_model == null)
+                Validator.ValidateControl(sender, errorProvider, e);
         }
 
         private void txtPasswordConfirm_Validating(object sender, CancelEventArgs e)
         {
-            Validator.ValidateControl(sender, errorProvider, e, sameAs: txtPassword.Text);
+            if(_model == null || !string.IsNullOrEmpty(txtPassword.Text))
+                Validator.ValidateControl(sender, errorProvider, e, sameAs: txtPassword.Text);
         }
 
-        private void clbRoles_Validating(object sender, CancelEventArgs e)
-        {
-
-        }
     }
 }

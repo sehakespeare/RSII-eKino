@@ -73,6 +73,19 @@ namespace eKino.WinUI
                 return await HandleFlurlException<T>(ex);
             }
         }
+        public async Task<T> Delete<T>(object id)
+        {
+
+            try
+            {
+                var result = await $"{_endpoint}{_resource}/{id}".WithBasicAuth(Username, Password).DeleteAsync().ReceiveJson<T>();
+                return result;
+            }
+            catch (FlurlHttpException ex)
+            {
+                return await HandleFlurlException<T>(ex);
+            }
+        }
         private static async Task<T> HandleFlurlException<T>(FlurlHttpException ex)
         {
             if (ex.StatusCode == (int)HttpStatusCode.Unauthorized)
@@ -85,19 +98,35 @@ namespace eKino.WinUI
             }
             else
             {
-                var errors = await ex.GetResponseJsonAsync<ProblemDetailsWithErrors>();
+                var stringBuilder = new StringBuilder();
 
-                if (errors != null)
+                try
                 {
+                    var errors = await ex.GetResponseJsonAsync<Dictionary<string, string[]>>();
 
-                    var stringBuilder = new StringBuilder();
-                    foreach (var error in errors.Errors)
+                    if (errors != null && errors.ContainsKey("ERROR"))
                     {
-                        stringBuilder.AppendLine(string.Join(", ", error.Value));
+                        foreach (var error in errors["ERROR"])
+                        {
+                            stringBuilder.AppendLine(string.Join(", ", error));
+                        }
+                        MessageBox.Show(stringBuilder.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-
-                    MessageBox.Show(stringBuilder.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                catch (Exception)
+                {
+                    var errors = await ex.GetResponseJsonAsync<ProblemDetailsWithErrors>();
+
+                    if (errors != null && errors.Errors != null) 
+                    {
+                        foreach (var error in errors.Errors)
+                        {
+                            stringBuilder.AppendLine(string.Join(", ", error.Value));
+                        }
+                        MessageBox.Show(stringBuilder.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+              
             }
             return default;
         }

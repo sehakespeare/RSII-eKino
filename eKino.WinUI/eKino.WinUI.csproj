@@ -18,7 +18,37 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="frmProjectionDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmMovieDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmReservationList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmProjectionList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmMovieList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmDirectorList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmDirectorDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmAuditoriumList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmAuditoriumDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="frmGenreList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmGenreDetails.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Properties\Resources.Designer.cs">

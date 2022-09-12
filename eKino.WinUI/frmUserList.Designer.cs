@@ -34,6 +34,7 @@
             this.LastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RoleNames = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Status = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -59,7 +60,8 @@
             this.FirstName,
             this.LastName,
             this.RoleNames,
-            this.Status});
+            this.Status,
+            this.Delete});
             this.dgvUsers.Location = new System.Drawing.Point(10, 84);
             this.dgvUsers.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvUsers.MultiSelect = false;
@@ -71,6 +73,7 @@
             this.dgvUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvUsers.Size = new System.Drawing.Size(709, 244);
             this.dgvUsers.TabIndex = 0;
+            this.dgvUsers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsers_CellContentClick);
             this.dgvUsers.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsers_CellDoubleClick);
             this.dgvUsers.Enter += new System.EventHandler(this.dgvUsers_Enter);
             this.dgvUsers.Leave += new System.EventHandler(this.dgvUsers_Leave);
@@ -108,7 +111,6 @@
             this.RoleNames.MinimumWidth = 6;
             this.RoleNames.Name = "RoleNames";
             this.RoleNames.ReadOnly = true;
-            this.RoleNames.Width = 125;
             // 
             // Status
             // 
@@ -117,7 +119,15 @@
             this.Status.MinimumWidth = 6;
             this.Status.Name = "Status";
             this.Status.ReadOnly = true;
-            this.Status.Width = 125;
+            this.Status.Width = 65;
+            // 
+            // Delete
+            // 
+            this.Delete.HeaderText = "";
+            this.Delete.Name = "Delete";
+            this.Delete.ReadOnly = true;
+            this.Delete.Text = "Delete";
+            this.Delete.UseColumnTextForButtonValue = true;
             // 
             // btnSearch
             // 
@@ -252,6 +262,7 @@
             this.Controls.Add(this.dgvUsers);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmUserList";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "User List";
             this.Load += new System.EventHandler(this.frmUser_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).EndInit();
@@ -268,16 +279,17 @@
         private Label label1;
         private Label label2;
         private TextBox txtName;
-        private DataGridViewTextBoxColumn Email;
-        private DataGridViewTextBoxColumn FirstName;
-        private DataGridViewTextBoxColumn LastName;
-        private DataGridViewTextBoxColumn RoleNames;
-        private DataGridViewCheckBoxColumn Status;
         private Label lblHint;
         private Label labelHint2;
         private Button btnPage;
         private Button btnNext;
         private Button btnPrev;
         private Button btnCreateNew;
+        private DataGridViewTextBoxColumn Email;
+        private DataGridViewTextBoxColumn FirstName;
+        private DataGridViewTextBoxColumn LastName;
+        private DataGridViewTextBoxColumn RoleNames;
+        private DataGridViewCheckBoxColumn Status;
+        private DataGridViewButtonColumn Delete;
     }
 }

@@ -31,6 +31,7 @@ namespace eKino.WinUI
 
         private async void btnSearch_Click(object sender, EventArgs e)
         {
+            Page = 0;
             await LoadDataGrid();
         }
 
@@ -104,7 +105,17 @@ namespace eKino.WinUI
         {
             Page++;
             await LoadDataGrid();
+            bool noMoreEntries = dgvUsers.RowCount == 0;
+            if (noMoreEntries)
+            {
+                Page--;
+                await LoadDataGrid();
+            }
             UpdatePagination();
+            if (noMoreEntries)
+            {
+                btnNext.Enabled = false;
+            }
         }
 
         private async void btnPrev_Click(object sender, EventArgs e)
@@ -120,5 +131,30 @@ namespace eKino.WinUI
             btnPage.Text = $"Page {Page + 1}";
         }
 
+        private async void dgvUsers_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dgvUsers.ColumnCount - 1)
+            {
+                if (dgvUsers.Rows[e.RowIndex].DataBoundItem is User row)
+                {
+                    if(row.Username == APIService.Username)
+                    {
+                        MessageBox.Show("You cannot delete your own account.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    if (MessageBox.Show("Are you sure?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
+                    {
+                        return;
+                    }
+
+                    var result = await UsersService.Delete<Model.User>(row.UserId);
+                    if (result != null)
+                    {
+                        await LoadDataGrid();
+                    }
+                }
+            }
+        }
     }
 }

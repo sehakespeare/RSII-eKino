@@ -33,7 +33,7 @@ namespace eKino.Services.Database
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=ekino-sql,1433;Database=eKino;User=sa;Password=QWElkj132!;ConnectRetryCount=0");
+                optionsBuilder.UseSqlServer("Server=.;Database=eKino;Trusted_Connection=yes;User=sa;Password=QWElkj132!;ConnectRetryCount=0");
             }
         }
 

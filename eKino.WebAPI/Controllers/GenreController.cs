@@ -7,10 +7,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace eKino.WebAPI.Controllers
 {
-
+    [ApiController]
+    [Route("[controller]")]
+    [Authorize]
     public class GenreController : BaseCRUDController<Model.Genre, GenreSearchObject, GenreUpsertRequest, GenreUpsertRequest>
     {
-        public GenreController(ICRUDService<Model.Genre, GenreSearchObject, GenreUpsertRequest, GenreUpsertRequest> service)
+        public GenreController(IGenreService service)
             : base(service)
         {
         }

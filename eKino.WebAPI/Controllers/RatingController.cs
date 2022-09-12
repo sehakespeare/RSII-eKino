@@ -7,10 +7,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace eKino.WebAPI.Controllers
 {
-
-    public class RatingController : BaseCRUDController<Model.Rating, ReservationSearchObject, ReservationUpsertRequest, ReservationUpsertRequest>
+    [ApiController]
+    [Route("[controller]")]
+    [Authorize]
+    public class RatingController : BaseCRUDController<Model.Rating, RatingSearchObject, RatingUpsertRequest, RatingUpsertRequest>
     {
-        public RatingController(ICRUDService<Model.Rating, ReservationSearchObject, ReservationUpsertRequest, ReservationUpsertRequest> service)
+        public RatingController(IRatingService service)
             : base(service)
         {
         }

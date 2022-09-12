@@ -7,8 +7,8 @@ namespace eKino.Model.SearchObjects
 {
     public class TransactionSearchObject : BaseSearchObject
     {
-        public int UserId { get; set; }
-        public int ReservationId { get; set; }
-        public DateTime DateOfTransaction { get; set; }
+        public int? UserId { get; set; }
+        public int? ReservationId { get; set; }
+        public DateTime? DateOfTransaction { get; set; }
     }
 }

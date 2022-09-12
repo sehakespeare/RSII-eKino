@@ -11,7 +11,7 @@ namespace eKino.WebAPI.Controllers
     [Route("[controller]")]
     public class UserController :  BaseCRUDController<Model.User, UserSearchObject, UserInsertRequest, UserUpdateRequest>
     {
-        public UserController(IUsersService service)
+        public UserController(IUserService service)
             :base(service)
         {
         }

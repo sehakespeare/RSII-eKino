@@ -7,10 +7,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace eKino.WebAPI.Controllers
 {
-
+    [ApiController]
+    [Route("[controller]")]
+    [Authorize]
     public class ProjectionController : BaseCRUDController<Model.Projection, ProjectionSearchObject, ProjectionUpsertRequest, ProjectionUpsertRequest>
     {
-        public ProjectionController(ICRUDService<Model.Projection, ProjectionSearchObject, ProjectionUpsertRequest, ProjectionUpsertRequest> service)
+        public ProjectionController(IProjectionService service)
             : base(service)
         {
         }

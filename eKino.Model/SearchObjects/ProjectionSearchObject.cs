@@ -7,8 +7,8 @@ namespace eKino.Model.SearchObjects
 {
     public class ProjectionSearchObject : BaseSearchObject
     {
-        public DateTime DateOfProjection { get; set; }
-        public int AuditoriumId { get; set; }
-        public int MovieId { get; set; }
+        public DateTime? DateOfProjection { get; set; }
+        public int? AuditoriumId { get; set; }
+        public int? MovieId { get; set; }
     }
 }

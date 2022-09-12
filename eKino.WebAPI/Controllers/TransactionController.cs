@@ -7,10 +7,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace eKino.WebAPI.Controllers
 {
-
+    [ApiController]
+    [Route("[controller]")]
+    [Authorize]
     public class TransactionController : BaseCRUDController<Model.Transaction, TransactionSearchObject, TransactionUpsertRequest, TransactionUpsertRequest>
     {
-        public TransactionController(ICRUDService<Model.Transaction, TransactionSearchObject, TransactionUpsertRequest, TransactionUpsertRequest> service)
+        public TransactionController(ITransactionService service)
             : base(service)
         {
         }

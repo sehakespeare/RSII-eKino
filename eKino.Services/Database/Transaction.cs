@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace eKino.Services.Database
 {
-    public partial class Transaction
+    public partial class Transaction : SoftDeletableEntity
     {
         public int TransactionId { get; set; }
         public DateTime DateOfTransaction { get; set; }

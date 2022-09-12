@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Net.Mail;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -12,7 +13,7 @@ namespace eKino.WinUI.Helper
 {
     public static class Validator
     {
-        public static void ValidateControl(object control, ErrorProvider err, CancelEventArgs e, int minLength = 0, bool email = false, string? sameAs = null)
+        public static void ValidateControl(object control, ErrorProvider err, CancelEventArgs e, int minLength = 0, bool email = false, string? sameAs = null, string? regex = null, string? formatHint = null)
         {
             if (control is TextBox textbox)
             {
@@ -32,6 +33,13 @@ namespace eKino.WinUI.Helper
                 else if(!string.IsNullOrEmpty(sameAs) && !string.IsNullOrEmpty(textbox.Text) && textbox.Text != sameAs)
                 {
                     err.SetError(textbox, $"Please enter the same value again.");
+                }
+                else if(regex != null && !Regex.IsMatch(textbox.Text, regex))
+                {
+                    if(formatHint != null)
+                        err.SetError(textbox, $"Invalid format, the value should match the following pattern: " + formatHint);
+                    else
+                        err.SetError(textbox, $"Invalid format.");
                 }
                 else
                 {

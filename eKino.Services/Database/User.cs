@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace eKino.Services.Database
 {
-    public partial class User
+    public partial class User : SoftDeletableEntity
     {
         public User()
         {

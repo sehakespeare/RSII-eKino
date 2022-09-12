@@ -7,10 +7,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace eKino.WebAPI.Controllers
 {
-
+    [ApiController]
+    [Route("[controller]")]
+    [Authorize]
     public class DirectorController : BaseCRUDController<Model.Director, DirectorSearchObject, DirectorUpsertRequest, DirectorUpsertRequest>
     {
-        public DirectorController(ICRUDService<Model.Director, DirectorSearchObject, DirectorUpsertRequest, DirectorUpsertRequest> service)
+        public DirectorController(IDirectorService service)
             : base(service)
         {
         }

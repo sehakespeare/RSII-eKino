@@ -10,6 +10,8 @@ namespace eKino.Model.Requests
 
         [Required(AllowEmptyStrings = false)]
         public string Title { get; set; }
+        [Required(AllowEmptyStrings = false)]
+        public string Description { get; set; }
         [Required]
         [Range(minimum: 1900, maximum: 2100)]
         public int Year { get; set; } = DateTime.Now.Year;

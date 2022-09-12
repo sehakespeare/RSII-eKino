@@ -7,10 +7,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace eKino.WebAPI.Controllers
 {
-
+    [ApiController]
+    [Route("[controller]")]
+    [Authorize]
     public class MovieController : BaseCRUDController<Model.Movie, MovieSearchObject, MovieUpsertRequest, MovieUpsertRequest>
     {
-        public MovieController(ICRUDService<Model.Movie, MovieSearchObject, MovieUpsertRequest, MovieUpsertRequest> service)
+        public MovieController(IMovieService service)
             : base(service)
         {
         }

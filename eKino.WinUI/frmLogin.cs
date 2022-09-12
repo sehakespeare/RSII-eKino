@@ -56,6 +56,8 @@ namespace eKino.WinUI
                     }
                 }
 
+                throw new Exception("User account is deleted");
+
             }
             catch (Exception ex)
             {

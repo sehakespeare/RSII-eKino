@@ -60,7 +60,7 @@
             this.btnSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(82, 22);
-            this.btnSave.TabIndex = 0;
+            this.btnSave.TabIndex = 10;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -90,7 +90,7 @@
             this.txtPhoneNumber.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPhoneNumber.Name = "txtPhoneNumber";
             this.txtPhoneNumber.Size = new System.Drawing.Size(214, 23);
-            this.txtPhoneNumber.TabIndex = 6;
+            this.txtPhoneNumber.TabIndex = 4;
             this.txtPhoneNumber.Validating += new System.ComponentModel.CancelEventHandler(this.txtPhoneNumber_Validating);
             // 
             // label7
@@ -180,7 +180,7 @@
             this.txtPasswordConfirm.Name = "txtPasswordConfirm";
             this.txtPasswordConfirm.PasswordChar = '*';
             this.txtPasswordConfirm.Size = new System.Drawing.Size(214, 23);
-            this.txtPasswordConfirm.TabIndex = 9;
+            this.txtPasswordConfirm.TabIndex = 7;
             this.txtPasswordConfirm.Validating += new System.ComponentModel.CancelEventHandler(this.txtPasswordConfirm_Validating);
             // 
             // label4
@@ -199,7 +199,7 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(214, 23);
-            this.txtPassword.TabIndex = 8;
+            this.txtPassword.TabIndex = 6;
             this.txtPassword.Validating += new System.ComponentModel.CancelEventHandler(this.txtPassword_Validating);
             // 
             // label5
@@ -217,7 +217,7 @@
             this.txtUsername.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(214, 23);
-            this.txtUsername.TabIndex = 7;
+            this.txtUsername.TabIndex = 5;
             this.txtUsername.Validating += new System.ComponentModel.CancelEventHandler(this.txtUsername_Validating);
             // 
             // label6
@@ -236,8 +236,7 @@
             this.clbRoles.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.clbRoles.Name = "clbRoles";
             this.clbRoles.Size = new System.Drawing.Size(132, 76);
-            this.clbRoles.TabIndex = 10;
-            this.clbRoles.Validating += new System.ComponentModel.CancelEventHandler(this.clbRoles_Validating);
+            this.clbRoles.TabIndex = 8;
             // 
             // chkActive
             // 
@@ -246,7 +245,7 @@
             this.chkActive.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chkActive.Name = "chkActive";
             this.chkActive.Size = new System.Drawing.Size(59, 19);
-            this.chkActive.TabIndex = 11;
+            this.chkActive.TabIndex = 9;
             this.chkActive.Text = "Active";
             this.chkActive.UseVisualStyleBackColor = true;
             // 
@@ -256,6 +255,7 @@
             // 
             // frmUserDetails
             // 
+            this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(455, 420);
@@ -266,6 +266,7 @@
             this.Controls.Add(this.btnSave);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmUserDetails";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "User Details";
             this.Load += new System.EventHandler(this.frmUserDetails_Load);
             this.groupBox1.ResumeLayout(false);
