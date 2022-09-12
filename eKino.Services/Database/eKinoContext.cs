@@ -33,7 +33,7 @@ namespace eKino.Services.Database
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Data Source=.;Initial Catalog=eKino; Trusted_Connection=yes; user=sa; Password=QWElkj132!");
+                optionsBuilder.UseSqlServer("Server=ekino-sql,1433;Database=eKino;User=sa;Password=QWElkj132!;ConnectRetryCount=0");
             }
         }
 
