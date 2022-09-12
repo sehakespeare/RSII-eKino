@@ -6,13 +6,13 @@
 
   ```
   Korisnicko ime: admin
-  Password: test
+  Password: admin
   ```
 - Client (Mobile)
 
   ```
   Korisnicko ime: client
-  Password: test
+  Password: client
   ```
 
 #### Kredencijali za placanje
