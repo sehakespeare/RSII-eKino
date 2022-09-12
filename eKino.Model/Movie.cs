@@ -9,6 +9,7 @@ namespace eKino.Model
 
         public int MovieId { get; set; }
         public string Title { get; set; }
+        public string Description { get; set; }
         public int Year { get; set; } = DateTime.Now.Year;
         public int RunningTime { get; set; }
         public byte[] Photo { get; set; }

@@ -13,6 +13,7 @@ namespace eKino.Services.Database
 
         public int MovieId { get; set; }
         public string Title { get; set; } = null!;
+        public string Description { get; set; } = null!;
         public int Year { get; set; } = DateTime.Now.Year;
         public int RunningTime { get; set; }
         public byte[] Photo { get; set; } = null!;
