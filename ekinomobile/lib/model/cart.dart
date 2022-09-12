@@ -1,11 +1,11 @@
-import 'package:ekinomobile/model/product.dart';
+import 'package:ekinomobile/model/movie.dart';
 
 class Cart {
     List<CartItem> items = [];
 }
 
 class CartItem {
-  CartItem(this.product, this.count);
-  late Product product;
+  CartItem(this.projection, this.count);
+  late Movie projection;
   late int count;
 }

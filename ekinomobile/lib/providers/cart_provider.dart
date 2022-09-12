@@ -2,11 +2,11 @@ import 'package:collection/collection.dart';
 import 'package:ekinomobile/model/cart.dart';
 import 'package:flutter/widgets.dart';
 
-import '../model/product.dart';
+import '../model/movie.dart';
 
 class CartProvider with ChangeNotifier {
   Cart cart = Cart();
-  addToCart(Product product) {
+  addToCart(Movie product) {
     if (findInCart(product) != null) {
       findInCart(product)?.count++;
     } else {
@@ -16,13 +16,13 @@ class CartProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  removeFromCart(Product product) {
-    cart.items.removeWhere((item) => item.product.proizvodId == product.proizvodId);
+  removeFromCart(Movie product) {
+    cart.items.removeWhere((item) => item.projection.movieId == product.movieId);
     notifyListeners();
   }
 
-  CartItem? findInCart(Product product) {
-    CartItem? item = cart.items.firstWhereOrNull((item) => item.product.proizvodId == product.proizvodId);
+  CartItem? findInCart(Movie product) {
+    CartItem? item = cart.items.firstWhereOrNull((item) => item.projection.movieId == product.movieId);
     return item;
   }
 }

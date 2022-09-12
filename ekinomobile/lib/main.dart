@@ -1,9 +1,11 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:ekinomobile/providers/cart_provider.dart';
-import 'package:ekinomobile/providers/order_provider.dart';
-import 'package:ekinomobile/providers/product_provider.dart';
+import 'package:ekinomobile/providers/reservation_provider.dart';
+import 'package:ekinomobile/providers/movie_provider.dart';
 import 'package:ekinomobile/screens/cart/cart_screen.dart';
-import 'package:ekinomobile/screens/products/product_details_screen.dart';
-import 'package:ekinomobile/screens/products/product_list_screen.dart';
+import 'package:ekinomobile/screens/movies/movie_details_screen.dart';
+import 'package:ekinomobile/screens/movies/movie_list_screen.dart';
 import 'package:ekinomobile/utils/util.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -12,10 +14,10 @@ import 'providers/user_provider.dart';
 
 void main() => runApp(MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => ProductProvider()),
+        ChangeNotifierProvider(create: (_) => MovieProvider()),
         ChangeNotifierProvider(create: (_) => UserProvider()),
         ChangeNotifierProvider(create: (_) => CartProvider()),
-        ChangeNotifierProvider(create: (_) => OrderProvider()),
+        ChangeNotifierProvider(create: (_) => ReservationProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: true,
@@ -24,46 +26,49 @@ void main() => runApp(MultiProvider(
           brightness: Brightness.light,
           primaryColor: Colors.deepPurple,
           textButtonTheme: TextButtonThemeData(
-                style: TextButton.styleFrom(
-                    primary: Colors.deepPurple,
-                    textStyle: const TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        fontStyle: FontStyle.italic))),
+              style: TextButton.styleFrom(
+                  foregroundColor: Colors.deepPurple,
+                  textStyle: const TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      fontStyle: FontStyle.italic))),
 
           // Define the default `TextTheme`. Use this to specify the default
           // text styling for headlines, titles, bodies of text, and more.
           textTheme: const TextTheme(
             headline1: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
             headline6: TextStyle(fontSize: 36.0, fontStyle: FontStyle.italic),
-           
           ),
         ),
         home: HomePage(),
         onGenerateRoute: (settings) {
-          if (settings.name == ProductListScreen.routeName) {
+          if (settings.name == MovieListScreen.routeName) {
             return MaterialPageRoute(
-                builder: ((context) => ProductListScreen()));
+                builder: ((context) => const MovieListScreen()));
           } else if (settings.name == CartScreen.routeName) {
             return MaterialPageRoute(
-                builder: ((context) => CartScreen()));
+                builder: ((context) => const CartScreen()));
           }
 
           var uri = Uri.parse(settings.name!);
           if (uri.pathSegments.length == 2 &&
-              "/${uri.pathSegments.first}" == ProductDetailsScreen.routeName) {
+              "/${uri.pathSegments.first}" == MovieDetailsScreen.routeName) {
             var id = uri.pathSegments[1];
-            return MaterialPageRoute(builder: (context) => ProductDetailsScreen(id));
+            return MaterialPageRoute(
+                builder: (context) => MovieDetailsScreen(id));
           }
 
+          throw Exception("onGenerateRoute failed");
         },
       ),
     ));
 
 class HomePage extends StatelessWidget {
-  TextEditingController _usernameController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
   late UserProvider _userProvider;
+
+  HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -71,14 +76,14 @@ class HomePage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Flutter Row Example"),
+        title: const Text("Welcome to eKino!"),
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
             Container(
               height: 400,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   image: DecorationImage(
                       image: AssetImage("assets/images/background.png"),
                       fit: BoxFit.fill)),
@@ -89,7 +94,7 @@ class HomePage extends StatelessWidget {
                     width: 80,
                     height: 120,
                     child: Container(
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                             image: DecorationImage(
                       image: AssetImage("assets/images/light-1.png"),
                     )))),
@@ -99,104 +104,102 @@ class HomePage extends StatelessWidget {
                     width: 80,
                     height: 120,
                     child: Container(
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                             image: DecorationImage(
                       image: AssetImage("assets/images/clock.png"),
                     )))),
-                Container(
-                  child: Center(
-                      child: Text(
-                    "Login",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 40,
-                        fontWeight: FontWeight.bold),
-                  )),
-                )
+                const Center(
+                    child: Text(
+                  "Login",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 40,
+                      fontWeight: FontWeight.bold),
+                ))
               ]),
             ),
             Padding(
-              padding: EdgeInsets.all(40),
+              padding: const EdgeInsets.all(40),
               child: Container(
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10)),
                 child: Column(children: [
                   Container(
-                    padding: EdgeInsets.all(8),
-                    decoration: BoxDecoration(
+                    padding: const EdgeInsets.all(8),
+                    decoration: const BoxDecoration(
                         border: Border(bottom: BorderSide(color: Colors.grey))),
                     child: TextField(
                       controller: _usernameController,
                       decoration: InputDecoration(
                           border: InputBorder.none,
-                          hintText: "Email or phone",
+                          hintText: "Username",
                           hintStyle: TextStyle(color: Colors.grey[400])),
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.all(8),
+                    padding: const EdgeInsets.all(8),
                     child: TextField(
                       controller: _passwordController,
                       decoration: InputDecoration(
                           border: InputBorder.none,
-                          hintText: "Pasword",
+                          hintText: "Password",
                           hintStyle: TextStyle(color: Colors.grey[400])),
                     ),
                   ),
                 ]),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 2,
             ),
             Container(
               height: 50,
-              margin: EdgeInsets.fromLTRB(40, 0, 40, 0),
+              margin: const EdgeInsets.fromLTRB(40, 0, 40, 0),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                gradient: LinearGradient(colors: [
+                gradient: const LinearGradient(colors: [
                   Color.fromRGBO(143, 148, 251, 1),
                   Color.fromRGBO(143, 148, 251, .6)
                 ]),
               ),
               child: InkWell(
-                onTap: () async {
-                  try {
-                    Authorization.username = _usernameController.text;
-                    Authorization.password = _passwordController.text;
-
-                    await _userProvider.get();
-
-                    Navigator.pushNamed(context, ProductListScreen.routeName);
-                  } catch (e) {
-                    showDialog(
-                        context: context,
-                        builder: (BuildContext context) => AlertDialog(
-                              title: Text("Error"),
-                              content: Text(e.toString()),
-                              actions: [
-                                TextButton(
-                                  child: Text("Ok"),
-                                  onPressed: () => Navigator.pop(context),
-                                )
-                              ],
-                            ));
-                  }
-                },
-                child: Center(child: Text("Login")),
+                onTap: () => login(context),
+                child: const Center(child: Text("Login")),
               ),
             ),
-            SizedBox(
-              height: 40,
-            ),
-            Text("Forgot password?"),
-            SizedBox(
+            const SizedBox(
               height: 40,
             ),
           ],
         ),
       ),
     );
+  }
+
+  login(BuildContext context, [bool mounted = true]) async {
+    try {
+      Authorization.username = _usernameController.text;
+      Authorization.password = _passwordController.text;
+
+      await _userProvider.get();
+
+      if(!mounted) return;
+
+      Navigator.pushNamed(context, MovieListScreen.routeName);
+    } catch (e) {
+      showDialog(
+          context: context,
+          builder: (BuildContext context) => AlertDialog(
+                title: const Text("Error"),
+                content: Text(e.toString()),
+                actions: [
+                  TextButton(
+                    child: const Text("Ok"),
+                    onPressed: () => Navigator.pop(context),
+                  )
+                ],
+              ));
+    }
   }
 }

@@ -1,14 +1,12 @@
-import 'package:ekinomobile/screens/products/product_list_screen.dart';
+import 'package:ekinomobile/screens/movies/movie_list_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 import '../screens/cart/cart_screen.dart';
 import 'ekino_drawer.dart';
 
 class MasterScreenWidget extends StatefulWidget {
-  Widget? child;
-  MasterScreenWidget({this.child, Key? key}) : super(key: key);
+  final Widget? child;
+  const MasterScreenWidget({this.child, Key? key}) : super(key: key);
 
   @override
   State<MasterScreenWidget> createState() => _MasterScreenWidgetState();
@@ -22,7 +20,7 @@ class _MasterScreenWidgetState extends State<MasterScreenWidget> {
       currentIndex = index;
     });
     if (currentIndex == 0) {
-      Navigator.pushNamed(context, ProductListScreen.routeName);
+      Navigator.pushNamed(context, MovieListScreen.routeName);
     } else if (currentIndex == 1) {
       Navigator.pushNamed(context, CartScreen.routeName);
     }
@@ -33,19 +31,19 @@ class _MasterScreenWidgetState extends State<MasterScreenWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      drawer: ekinoDrawer(),
+      drawer: EKinoDrawer(),
       body: SafeArea(
         child: widget.child!,
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
+            icon: Icon(Icons.movie),
+            label: 'Movies',
             
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_bag),
+            icon: Icon(Icons.shopping_cart_checkout),
             label: 'Cart',
           ),
           
